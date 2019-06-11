@@ -161,7 +161,10 @@ h1, h2, h3, h4, h5, h6 {
     .site-footer a:hover {
       color: white; }
   .site-footer ul li {
-    margin-bottom: 10px; }
+    margin-bottom: 10px; 
+    margin-right: 2em;
+    display: inline;
+  }
   .site-footer .footer-heading {
     font-size: 20px;
     color: #fff; }
@@ -832,3 +835,28 @@ h1, h2, h3, h4, h5, h6 {
 .blockquote img {
   width: 40px;
   border-radius: 50%; }
+
+  @media (max-width: 500px) {
+    .site-blocks-cover h1 {
+      font-size: 3rem;
+    }
+    .hero-slider .owl-nav {
+      right: 5%;
+      width: 90%;
+      left: 5%;
+      bottom: 100px;
+    }
+    .hero-slider .owl-nav .owl-prev{
+      float: left;
+    }
+    .hero-slider .owl-nav .owl-next {
+      float: right;
+    }
+    .site-blocks-cover .sub-text {
+      font-size: 1.2rem;
+      line-height: 1.1;
+    }
+    .mb5{
+      margin-bottom: 1rem !important;
+    }
+  }
