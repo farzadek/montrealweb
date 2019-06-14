@@ -39,9 +39,4 @@
     $texts['name'] = ['Name', 'Nom complet'];
     $texts['phone'] = ['Phone', 'Téléphone'];
     $texts['send_message'] = ['Send Message', 'Envoyer le message'];
-    $texts['home'] = ['Home', 'Accueuil'];
-    $texts['home'] = ['Home', 'Accueuil'];
-    $texts['home'] = ['Home', 'Accueuil'];
-    $texts['home'] = ['Home', 'Accueuil'];
-    $texts['home'] = ['Home', 'Accueuil'];
 ?>

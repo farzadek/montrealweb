@@ -924,6 +924,34 @@ h1, h2, h3, h4, h5, h6 {
       display: table;
     }
 
+    #portfolio_page .tags em{
+      font-size: .8em;
+      background-color: #eee;
+      padding: .15em .5em;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 0 .25em .25em 0;
+    }
+    #portfolio_page #lightSlider1 li,
+    #portfolio_page #lightSlider2 li,
+    #portfolio_page #lightSlider3 li{        
+      padding-right: .75em;
+      padding-left: .75em;
+    }
+    #portfolio_page hr{
+      width: 70%;
+      margin: 1em auto;
+    }
+    #previewModal .modal-body img{
+      width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+    #previewModal .modal-header .close{
+      padding: 0;
+      margin: 0;
+    }
+/* --------------------------------------------------------------------------------------------  */
 @media (min-width: 768px) {
       .site-footer ul {
         margin: 0 auto;
@@ -949,10 +977,11 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 1.4;
       }
 }
+/* --------------------------------------------------------------------------------------------  */
 @media (max-width: 770px) and (min-width: 550px) {
       .person img {
         box-shadow: 0 0 0.5em 0.2em #ccc;
-        height: 12rem;
+        width: 35%;
       }
       .person:nth-child(2n) {
         background-color: rgba(0, 123, 255, .04);
@@ -971,8 +1000,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.75em;
       }
   }
-
-
+/* --------------------------------------------------------------------------------------------  */
   @media (max-width: 550px) {
     .site-blocks-cover h1 {
       font-size: 3rem;

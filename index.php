@@ -1,4 +1,3 @@
-
 <?php
   include_once('pages/texts.php');
   $name = '';
@@ -13,48 +12,61 @@
   $findError = false;
   $succ = false;
   $submitted = false;
-  $lang = 0;
+  $lang = 1;
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
 
   if (isset($_POST['submitted'])){
-    $submitted = true;
-    $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
-    $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING);
-    $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
-    $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
-    if(!$name){
-      $error['name'] = "Don't you want to tell us your name?";
-      $findError = true;
-    }
-    if(!$phone && !$email){
-      $error['email'] = "We need your phone number or email address to contact you!";
-      $findError = true;
-    } else {
-      if($phone && !preg_match("/^\(?([2-9][0-8][0-9])\)?[-. ]?([2-9][0-9]{2})[-. ]?([0-9]{4})$/", $phone)){
-        $error['phone'] = "It seems that Phone no. is not correct!";
-        $findError = true;
+      $submitted = true;
+      $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
+      $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING);
+      $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
+      $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
+      if(!$name){
+          $error['name'] = "Don't you want to tell us your name?";
+          $findError = true;
       }
-      if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error['email'] = "It seems that Email format is not correct!";
-        $findError = true;
+      if(!$phone && !$email){
+          $error['email'] = "We need your phone number or email address to contact you!";
+          $findError = true;
+      } else {
+          if($phone && !preg_match("/^\(?([2-9][0-8][0-9])\)?[-. ]?([2-9][0-9]{2})[-. ]?([0-9]{4})$/", $phone)){
+              $error['phone'] = "It seems that Phone no. is not correct!";
+              $findError = true;
+          }
+          if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+              $error['email'] = "It seems that Email format is not correct!";
+              $findError = true;
+          }
       }
-    }
-    if(!$message){
-      $error['message'] = "Would you like to tell us how can we help?";
-      $findError = true;
-    }
+      if(!$message){
+          $error['message'] = "Would you like to tell us how can we help?";
+          $findError = true;
+      }
+
+      $msg = '';
+      if(!$findError){
+          $msg = '<p style="font-size:12px">NAME: <strong>$name</strong></p><p style="font-size:12px">EMAIL: <strong>$email</strong></p>';
+          $msg .= '<p style="font-size:12px">PHONE: <strong>$phone</strong></p><p style="font-size:13px">$message</p>';
+          if(mail("farzadek@gmail.com","from MontrealWeb.ca",$msg)){
+              $succ = true;
+              $msg = '';
+              if($email){
+                  if($name){$msg .= '<p>Dear <strong>'.$name.'</strong></p>';}
+                  $msg .= '<p>We received your message and we\'ll contact you as soon as possible.</p>';
+                  $msg .= '<p>Have a nice day.</p>';
+                  $msg .= '<p>Lili Ashadi - MontrealWEB.ca</p>';
+                  mail($email,"Message from MontrealWeb.ca",$msg);
+              }
+          } else { 
+              $succ = false; 
+              $error['mail'] = 'Sorry! The system couldn\'t deliver your message. Please try later!';
+          }
+      }
+
   }
 
-  if(!$findError){
-    if(mail("someone@example.com","My subject",$message)){
-      $succ = true;
-    } else { 
-      $succ = false; 
-      $error['mail'] = 'Sorry! The system couldn\'t deliver your message. Please try later!';
-    }
-  }
 ?>
 
 <!DOCTYPE html>
@@ -88,11 +100,9 @@
   </head>
 
   <script>
-    function changeLang(){
-      <?php 
-        if($lang==0){$lang = 1;}else{$lang = 0;} 
-        setcookie('lang', $lang, 90000);
-      ?>
+    function changeLang(lang) {
+      var cvalue = lang==0 ? 1 : 0;
+      document.cookie = "lang=" + cvalue + ";path=/";
       location.reload();
     }
   </script>
@@ -100,15 +110,14 @@
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
   <div class="site-wrap">
-
     <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
+    <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
+            <span class="icon-close2 js-menu-toggle"></span>
         </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
+    </div>
+    <div class="site-mobile-menu-body"></div>
+</div> <!-- .site-mobile-menu -->
     
     
     <div class="site-navbar-wrap">
@@ -134,7 +143,7 @@
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                    <li><a onClick="changeLang()" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
+                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
                   </ul>
                 </div>
               </nav>
@@ -142,7 +151,7 @@
           </div>
         </div>
       </div>
-    </div> <!-- END .site-navbar-wrap -->
+    </div>
     
     <div class="site-blocks-cover" id="home-section">
       <div class="img-wrap">
@@ -163,7 +172,7 @@
           <div class="col-md-8 align-self-center">
             <div class="intro">
               <div class="heading">
-                <h1>MontréalWEB</h1><?php echo $name.'/'.$phone.'/'.$email.'/'.$message; ?>
+                <h1>MontréalWEB</h1>
               </div>
               <div class="text">
                 <p class="sub-text mb-5"><?php echo $texts['slogan'][$lang]; ?></p>
@@ -180,7 +189,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-6 section-title">
-            <span class="sub-title mb-2 d-block"><?php echo $texts['what_we_do'][$lang]; ?></span>
+            <span class="sub-title mb-2 d-block"><?php echo $texts['portfolio'][$lang]; ?></span>
             <h2 class="title text-primary"></h2>
           </div>
         </div>
@@ -291,7 +300,7 @@
           </div>
 
         </div>
-        <a href="/pages/portfolio.php" class="btn btn-primary btn-xs"><?php echo $texts['visit_portfolio_page'][$lang]; ?></a>
+        <a href="pages/portfolio.php" class="btn btn-primary btn-xs"><?php echo $texts['visit_portfolio_page'][$lang]; ?></a>
       </div>
     </div>
 
