@@ -70,7 +70,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $lang==0?'en':'fr'; ?>">
   <head>
     <title>MontrealWeb - A web agency to make beautiful websites</title>
     <meta charset="utf-8">
@@ -189,7 +189,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-6 section-title">
-            <span class="sub-title mb-2 d-block"><?php echo $texts['portfolio'][$lang]; ?></span>
+            <span class="sub-title mb-2 d-block"><?php echo $texts['what_we_do'][$lang]; ?></span>
             <h2 class="title text-primary"></h2>
           </div>
         </div>
@@ -259,43 +259,43 @@
         <div class="row mb-5">
 
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_browse.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_browse.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_coach.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_coach.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_elit.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_elit.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_hexa.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_hexa.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_lawmake.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_neos.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_neos.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_pivot.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_pivot.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_scenic.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_scenic.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_stamina.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_stamina.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
           <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_warehouse.jpg" alt="Image" class="img-fluid" class="img-fluid">
+            <img src="images/s_warehouse.png" alt="Image" class="img-fluid" class="img-fluid">
             <h3>Project title one</h3>
           </div>
 
@@ -362,7 +362,7 @@
       <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5">
-              <img src="images/hero_3.jpg" alt="Image" class="img-fluid" class="img-fluid">
+              <img src="images/hero_4.jpg" alt="Image" class="img-fluid" class="img-fluid">
             </div>
           <div class="col-lg-5 ml-auto section-title">
             <span class="sub-title mb-2 d-block"><?php echo $texts['about_us'][$lang]; ?></span>

@@ -9,7 +9,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo $lang==0?'en':'fr'; ?>">
   <head>
     <title>MontrealWeb - A web agency to make beautiful websites</title>
     <meta charset="utf-8">
@@ -38,6 +38,14 @@
     <link rel="stylesheet" href="../css/style.css">
     
   </head>
+  
+  <script>
+    function changeLang(lang) {
+      var cvalue = lang==0 ? 1 : 0;
+      document.cookie = "lang=" + cvalue + ";path=/";
+      location.reload();
+    }
+  </script>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -71,12 +79,12 @@
                                 </div>
 
                                 <ul class="site-menu main-menu js-clone-nav d-none d-lg-none">
-                                    <li><a href="#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
-                                    <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
-                                    <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
-                                    <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                                    <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
-                                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                                    <li><a href="../#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
+                                    <li><a href="../#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
+                                    <li><a href="../#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
+                                    <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
+                                    <li><a href="../#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
+                                    <li><a href="../#contact-section" class="nav-link">Contact</a></li>
                                     <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
                                 </ul>
                             </div>
