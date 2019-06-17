@@ -915,6 +915,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .person img {
       border-radius: 50%;
+      box-shadow: 0 0 7px 3px #ccc;
     }
 
     #portfolio-section .btn{
@@ -964,7 +965,6 @@ h1, h2, h3, h4, h5, h6 {
         margin-right: 0;
       }
       .person img {
-        border-radius: 50%;
         width: 60%;
         margin: 0 auto;
         display: block;
@@ -1051,7 +1051,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .person img {
-      border-radius: 50%;
       box-shadow: 0 0 0.5em 0.2em #ccc;
       width: 50%;
     }

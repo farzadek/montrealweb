@@ -409,7 +409,7 @@
               </div>
 
               <div class="col-lg-4 person">
-                <img src="images/person_2.jpg" alt="Image" class="img-fluid mb-2">
+                <img src="images/celine.jpg" alt="Image" class="img-fluid mb-2">
                 <h3>Céline & Caroline</h3>
                 <span class="mb-4 d-block"><?php echo $texts['motivators'][$lang]; ?></span>
                 <p><?php echo $texts['motivators_text'][$lang]; ?></p>
