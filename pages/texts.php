@@ -39,4 +39,5 @@
     $texts['name'] = ['Name', 'Nom complet'];
     $texts['phone'] = ['Phone', 'Téléphone'];
     $texts['send_message'] = ['Send Message', 'Envoyer le message'];
+    $texts['preview_the_project'] = ['Preview the project', 'Prévisualiser le projet'];
 ?>

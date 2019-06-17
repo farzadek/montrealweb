@@ -258,47 +258,20 @@
 
         <div class="row mb-5">
 
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_browse.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_coach.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_elit.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_hexa.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_lawmake.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_neos.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_pivot.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_scenic.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_stamina.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-          <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-            <img src="images/s_warehouse.png" alt="Image" class="img-fluid" class="img-fluid">
-            <h3>Project title one</h3>
-          </div>
-
+          <?php
+            $files = scandir('images/portfolio/web');
+            array_splice($files, 0, 2);
+            for($i=0;$i<sizeof($files);$i++){
+                $imgSrc = 'images/portfolio/web/'.$files[$i];
+                $s = explode('$',$files[$i])[0];
+          ?>
+                <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
+                  <img src="<?php echo 'images/portfolio/web/'.$files[$i];?>" alt="Image" class="img-fluid">
+                  <h3><?php echo $s; ?></h3>
+                </div>
+          <?php
+            }
+          ?>        
         </div>
         <a href="pages/portfolio.php" class="btn btn-primary btn-xs"><?php echo $texts['visit_portfolio_page'][$lang]; ?></a>
       </div>

@@ -5,7 +5,6 @@
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -101,46 +100,37 @@
             <div class="row mb-5">
                 <div class="col-lg-6 section-title">
                     <span class="sub-title mb-2 d-block"><?php echo $texts['portfolio'][$lang]; ?></span>
-                    <h2 class="title text-primary"><?php echo $texts['web_design'][$lang]; ?></h2>
+                    <h2 class="title text-primary">Web</h2>
                 </div>
             </div>
-            <div class="row mb-5">
+            <div class="row mb-5 web">
                 <ul id="lightSlider1">
-                    <li data-toggle="modal" data-target="#previewModal" onClick="showModal('s_lawmake.jpg', 'Project name')">
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                        <h3>Project name</h3>
-                        <p class="tags">
-                            <em>HTML5</em><em>CSS3</em><em>Javascript</em><em>jQuery</em><em>PHP</em><em>MySQL</em><em>LESS</em><em>Sketch</em><em>Photoshop</em><em>Photography</em>
-                        </p>
-                    </li>
+                    <?php
+                    $files = scandir('../images/portfolio/web');
+                    array_splice($files, 0, 2);
+                    for($i=0;$i<sizeof($files);$i++){
+                        $imgSrc = '../images/portfolio/web/'.$files[$i];
+                        $title = explode("$",$files[$i])[0];
+                        $s = explode('$',$files[$i])[1];
+                        $s = substr($s,0,-4);
+                        $s = explode('_',$s);
+                    ?>
                     <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                        <h3>Project name</h3>
+                        <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
+                        <h3><?php echo $title; ?></h3>
                         <p class="tags">
-                            <em>HTML5</em><em>CSS3</em><em>Javascript</em><em>jQuery</em><em>PHP</em><em>MySQL</em><em>LESS</em><em>Sketch</em><em>Photoshop</em><em>Photography</em>
+                            <?php
+                            for($j=0;$j<sizeof($s);$j++){
+                                echo '<em>'.$s[$j].'</em>';
+                            } 
+                            ?>
                         </p>
+                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
                     </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                        <h3>Project name</h3>
-                        <p class="tags">
-                            <em>HTML5</em><em>CSS3</em><em>Javascript</em><em>jQuery</em><em>PHP</em><em>MySQL</em><em>LESS</em><em>Sketch</em><em>Photoshop</em><em>Photography</em>
-                        </p>
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                        <h3>Project name</h3>
-                        <p class="tags">
-                            <em>HTML5</em><em>CSS3</em><em>Javascript</em><em>jQuery</em><em>PHP</em><em>MySQL</em><em>LESS</em><em>Sketch</em><em>Photoshop</em><em>Photography</em>
-                        </p>
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                        <h3>Project name</h3>
-                        <p class="tags">
-                            <em>HTML5</em><em>CSS3</em><em>Javascript</em><em>jQuery</em><em>PHP</em><em>MySQL</em><em>LESS</em><em>Sketch</em><em>Photoshop</em><em>Photography</em>
-                        </p>
-                    </li>
+                    <?php
+                    }
+                    ?>
+
                 </ul>
             </div>
             <hr/>
@@ -149,48 +139,64 @@
                     <h2 class="title text-primary"><?php echo $texts['graphic_design'][$lang]; ?></h2>
                 </div>
             </div>
-            <div class="row mb-5">
+            <div class="row mb-5 graphic">
                 <ul id="lightSlider2">
+                    <?php
+                    $files = scandir('../images/portfolio/graphic');
+                    array_splice($files, 0, 2);
+                    for($i=0;$i<sizeof($files);$i++){
+                        $imgSrc = '../images/portfolio/graphic/'.$files[$i];
+                        $s = explode('$',$files[$i])[1];
+                        $s = substr($s,0,-4);
+                        $s = explode('_',$s);
+                    ?>
                     <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
+                        <img src="<?php echo '../images/portfolio/graphic/'.$files[$i];?>" alt="Image" class="img-fluid">
+                        <p class="tags">                        
+                        <?php
+                        for($j=0;$j<sizeof($s);$j++){
+                            echo '<em>'.$s[$j].'</em>';
+                        } 
+                        ?>
+                        </p>
+                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
                     </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
             <hr/>
-            <div class="row mb-5">
+            <div class="row mb-5 photo">
                 <div class="col-lg-6 section-title">
                     <h2 class="title text-primary"><?php echo $texts['photography'][$lang]; ?></h2>
                 </div>
             </div>
-            <div class="row mb-5">
+            <div class="row mb-5 photo">
                 <ul id="lightSlider3">
+                    <?php
+                    $files = scandir('../images/portfolio/photo');
+                    array_splice($files, 0, 2);
+                    for($i=0;$i<sizeof($files);$i++){
+                        $imgSrc = '../images/portfolio/photo/'.$files[$i];
+                        $s = explode('$',$files[$i])[1];
+                        $s = substr($s,0,-4);
+                        $s = explode('_',$s);
+                    ?>
                     <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
+                        <img src="<?php echo '../images/portfolio/photo/'.$files[$i];?>" alt="Image" class="img-fluid">
+                        <p class="tags">                        
+                        <?php
+                        for($j=0;$j<sizeof($s);$j++){
+                            echo '<em>'.$s[$j].'</em>';
+                        } 
+                        ?>
+                        </p>
+                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
                     </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
-                    <li>
-                        <img src="../images/s_lawmake.jpg" alt="Image" class="img-fluid" class="img-fluid">
-                    </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
 
@@ -417,9 +423,10 @@
         });
 
     });    
-    function showModal(img, tlt){
-        $('#previewModal').find('img').attr('src', '../images/'+img);
-        $('#previewModal').find('h4').text(tlt);
+    function showModal(website){
+        var pageAd = "../portfolio/web_template/" + website;
+        $('#previewModal').find('.modal-body').find('object').attr('data', pageAd);
+        $('#previewModal').find('h4').text(website);
     }
 
   </script>
@@ -433,9 +440,10 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4></h4>
+        <div></div>
       </div>
       <div class="modal-body">
-          <img>
+          <object type="text/html" data=""></object>
       </div>
     </div>
 

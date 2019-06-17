@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Navbar */
 .site-navbar-wrap {
   position: relative;
-  z-index: 99;
+  z-index: 999;
   width: 100%;
   left: 0;
   background: #fff; }
@@ -927,11 +927,12 @@ h1, h2, h3, h4, h5, h6 {
 
     #portfolio_page .tags em{
       font-size: .8em;
-      background-color: #eee;
       padding: .15em .5em;
       border-radius: 4px;
       display: inline-block;
       margin: 0 .25em .25em 0;
+      background-color: #efefef;
+      color: #454545;
     }
     #portfolio_page #lightSlider1 li,
     #portfolio_page #lightSlider2 li,
@@ -939,12 +940,64 @@ h1, h2, h3, h4, h5, h6 {
       padding-right: .75em;
       padding-left: .75em;
     }
+    #portfolio_page>div>div:nth-child(1)>div>h2,
+    #portfolio_page>div>div.row.mb-5.web>div>ul>li.active>a {
+      color: #ffcd04 !important;
+    }
+    #portfolio_page>div>div.row.mb-5.web>div>ul>li.active>a{
+      background-color: #ffcd04 !important;
+    }
+    #portfolio_page .photo h2{
+      color: #428bca !important;
+    }
+    #lightSlider1>li.lslide>h3{
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      margin-left: 1em;
+    }
     #portfolio_page hr{
       width: 70%;
       margin: 1em auto;
     }
-    #previewModal .modal-body img{
+    #portfolio_page .btn-warning {
+      color: white;
+      padding: 2px 10px;
+      font-size: .8em;
+      font-family: roboto;
+      font-style: italic;
+    }
+
+    #portfolio_page>div>div:nth-child(4)>div>h2 {
+      color: #f78888 !important;
+    }
+    #portfolio_page>div>div.row.mb-5.graphic>div>ul>li.active>a{
+      background-color: #f78888 !important;
+    }
+    #portfolio_page .graphic .btn-warning {
+      background-color: #f78888 !important;
+      border-color: #e78888 !important;
+    }
+    #portfolio_page .photo .btn-warning {
+      background-color: #428bca !important;
+      border-color: #328bca !important;
+    }
+    #portfolio_page + .site-footer{
+      padding-top: 5em;
+    }
+    #previewModal .modal-header h4{
+      text-transform: capitalize;
+    }
+    #previewModal .modal-header div.web-prev{
+      height: 3px;
+      width: 25%;
+      background-color: #ffcd04;
+      position: absolute;
+      top: calc(1em - 2px);
+      right: 1em;
+    }
+    #previewModal .modal-body object {
       width: 100%;
+      min-height: 78vh;
       margin: 0 auto;
       display: block;
     }
@@ -975,6 +1028,10 @@ h1, h2, h3, h4, h5, h6 {
       .person p{
         text-align: justify;
         line-height: 1.4;
+      }
+      .modal-lg,
+      .modal-xl {
+        max-width: 85vw !important;
       }
 }
 /* --------------------------------------------------------------------------------------------  */
