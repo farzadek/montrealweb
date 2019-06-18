@@ -408,16 +408,26 @@
     function showModal(website, folder){
         var pageAd = "../portfolio/"+folder+"/" + website; console.log(pageAd);
         if(folder == 'web_template'){
+            $('.modal-header').show();
             $('#previewModal').find('.modal-body').find('object').show();
             $('#previewModal').find('.modal-body').find('.photo').css('display', 'none');
             $('#previewModal').find('.modal-body').find('object').attr('data', pageAd);
             $('#previewModal').find('h4').text(website);
         } else {
+            $('.modal-header').hide();
+            $('#previewModal').find('.modal-body').css('height','90vh');
             $('#previewModal').find('.modal-body').find('object').hide();
             $('#previewModal').find('.modal-body').find('.photo').show().attr('src', pageAd);
             $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
         }
     }
+
+    // to prevent r-click
+        $(function() {
+            $(this).bind("contextmenu", function(e) {
+                e.preventDefault();
+            });
+        }); 
 
   </script>
 
