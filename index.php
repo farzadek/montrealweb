@@ -393,13 +393,21 @@
           </div>
         </div>
 
-    
-    
+
+
     <div class="site-section" id="contact-section">
       <div class="container">
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'#contact_form'; ?>" class="contact-form" id="contact_form" novalidate>
           <div class="section-title text-center mb-5">
             <span class="sub-title mb-2 d-block"><?php echo $texts['get_in_touch'][$lang]; ?></span>
+            <div class="row mb-5 mt-4 map">
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44721.66035145057!2d-73.47358308354264!3d45.52811726347654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9048420ab8a53%3A0xc13f72bb8128c066!2sLongueuil%2C+QC+J4M+2Z3!5e0!3m2!1sen!2sca!4v1560868457170!5m2!1sen!2sca"></iframe>
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                  <a class="btn btn-sm" href="tel:1-438-300-0456">(438) 300-0456</a>
+                </div>
+            </div>
             <h2 class="title text-primary"><?php echo $texts['contact_us'][$lang]; ?></h2>
           </div>
 
@@ -433,7 +441,7 @@
 
           <div class="row">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-md" name="submitted">Send Message</button>
+              <button type="submit" class="btn btn-primary btn-sm" name="submitted">Send Message</button>
             </div>
           </div>
           <?php echo ($submitted && $succ)?'<p class="succ">Your message received! We will contact you as soon as possible</p>':'';?>

@@ -125,7 +125,7 @@
                             } 
                             ?>
                         </p>
-                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
+                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
                     </li>
                     <?php
                     }
@@ -146,20 +146,11 @@
                     array_splice($files, 0, 2);
                     for($i=0;$i<sizeof($files);$i++){
                         $imgSrc = '../images/portfolio/graphic/'.$files[$i];
-                        $s = explode('$',$files[$i])[1];
-                        $s = substr($s,0,-4);
-                        $s = explode('_',$s);
+                        $title = explode('$',$files[$i])[0];
                     ?>
                     <li>
                         <img src="<?php echo '../images/portfolio/graphic/'.$files[$i];?>" alt="Image" class="img-fluid">
-                        <p class="tags">                        
-                        <?php
-                        for($j=0;$j<sizeof($s);$j++){
-                            echo '<em>'.$s[$j].'</em>';
-                        } 
-                        ?>
-                        </p>
-                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
+                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'graphic')"><span class="icon-search-plus"></span></a>
                     </li>
                     <?php
                     }
@@ -179,20 +170,11 @@
                     array_splice($files, 0, 2);
                     for($i=0;$i<sizeof($files);$i++){
                         $imgSrc = '../images/portfolio/photo/'.$files[$i];
-                        $s = explode('$',$files[$i])[1];
-                        $s = substr($s,0,-4);
-                        $s = explode('_',$s);
+                        $title = explode("$",$files[$i])[0];
                     ?>
                     <li>
                         <img src="<?php echo '../images/portfolio/photo/'.$files[$i];?>" alt="Image" class="img-fluid">
-                        <p class="tags">                        
-                        <?php
-                        for($j=0;$j<sizeof($s);$j++){
-                            echo '<em>'.$s[$j].'</em>';
-                        } 
-                        ?>
-                        </p>
-                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
+                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'photo')"><span class="icon-search-plus"></span></a>
                     </li>
                     <?php
                     }
@@ -397,7 +379,7 @@
             adaptiveHeight:false,
     
             vertical:false,
-            verticalHeight:500,
+            verticalHeight:530,
             vThumbWidth:100,
     
             thumbItem:10,
@@ -423,10 +405,18 @@
         });
 
     });    
-    function showModal(website){
-        var pageAd = "../portfolio/web_template/" + website;
-        $('#previewModal').find('.modal-body').find('object').attr('data', pageAd);
-        $('#previewModal').find('h4').text(website);
+    function showModal(website, folder){
+        var pageAd = "../portfolio/"+folder+"/" + website; console.log(pageAd);
+        if(folder == 'web_template'){
+            $('#previewModal').find('.modal-body').find('object').show();
+            $('#previewModal').find('.modal-body').find('.photo').css('display', 'none');
+            $('#previewModal').find('.modal-body').find('object').attr('data', pageAd);
+            $('#previewModal').find('h4').text(website);
+        } else {
+            $('#previewModal').find('.modal-body').find('object').hide();
+            $('#previewModal').find('.modal-body').find('.photo').show().attr('src', pageAd);
+            $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
+        }
     }
 
   </script>
@@ -440,10 +430,10 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4></h4>
-        <div></div>
       </div>
       <div class="modal-body">
           <object type="text/html" data=""></object>
+          <img class="photo">
       </div>
     </div>
 
