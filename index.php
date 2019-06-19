@@ -87,6 +87,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/lightslider.css">
     
     
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
@@ -256,24 +257,75 @@
           </div>
         </div>
 
-        <div class="row mb-5">
-
-          <?php
-            $files = scandir('images/portfolio/web');
-            array_splice($files, 0, 2);
-            for($i=0;$i<sizeof($files);$i++){
-                $imgSrc = 'images/portfolio/web/'.$files[$i];
-                $s = explode('$',$files[$i])[0];
-          ?>
-                <div class="col-lg-6 col-md-6 mb-4 mb-lg-0 mb-5">
-                  <img src="<?php echo 'images/portfolio/web/'.$files[$i];?>" alt="Image" class="img-fluid">
-                  <h3><?php echo $s; ?></h3>
+        <div id="portfolio_page">
+          <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 section-title">
+                    <span class="sub-title mb-2 d-block"><?php echo $texts['portfolio'][$lang]; ?></span>
+                    <h2 class="title text-primary">Web</h2>
                 </div>
-          <?php
-            }
-          ?>        
+            </div>
+            <div class="row mb-5 web">
+                <ul id="lightSlider1">
+                    <?php
+                    $files = scandir('images/portfolio/web');
+                    array_splice($files, 0, 2);
+                    for($i=0;$i<sizeof($files);$i++){
+                        $imgSrc = 'images/portfolio/web/'.$files[$i];
+                        $title = explode("$",$files[$i])[0];
+                        $s = explode('$',$files[$i])[1];
+                        $s = substr($s,0,-4);
+                        $s = explode('_',$s);
+                    ?>
+                    <li>
+                        <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
+                        <h3><?php echo $title; ?></h3>
+                        <p class="tags">
+                            <?php
+                            for($j=0;$j<sizeof($s);$j++){
+                                echo '<em>'.$s[$j].'</em>';
+                            } 
+                            ?>
+                        </p>
+                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
+                    </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+            <hr/>
+            <div class="row mb-5">
+                <div class="col-lg-6 section-title">
+                    <h2 class="title text-primary"><?php echo $texts['graphic_design'][$lang]; ?></h2>
+                </div>
+            </div>
+            <div class="row mb-5 graphic">
+                <ul id="lightSlider2">
+                    <?php
+                    $files = scandir('images/portfolio/graphic');
+                    array_splice($files, 0, 2);
+                    for($i=0;$i<sizeof($files);$i++){
+                        $imgSrc = 'images/portfolio/graphic/'.$files[$i];
+                        $title = explode('$',$files[$i])[0];
+                    ?>
+                    <li>
+                        <img src="<?php echo 'images/portfolio/graphic/'.$files[$i];?>" alt="Image" class="img-fluid">
+                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'graphic')"><span class="icon-search-plus"></span></a>
+                    </li>
+                    <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+
+
+
+          </div>
         </div>
-        <a href="pages/portfolio.php" class="btn btn-primary btn-xs"><?php echo $texts['visit_portfolio_page'][$lang]; ?></a>
+
+
+
       </div>
     </div>
 
@@ -489,8 +541,173 @@
   <script src="js/jquery.easing.1.3.js"></script>
   
   <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/lightslider.js"></script>
   <script src="js/main.js"></script>
 
-     
+    <script>
+    $(document).ready(function() {
+        var item = 3;
+        if( $(window).width() < 768){ item = 2;}
+        if( $(window).width() < 480){ item = 1;}
+        $(window).resize(function() {
+            item = 3;
+            if( $(window).width() < 768) { item = 2;} 
+            if( $(window).width() < 480) { item = 1;} 
+        });
+        $("#lightSlider1").lightSlider({
+            item: item,
+            autoWidth: false,
+            slideMove: 1, // slidemove will be 1 if loop is true
+            slideMargin: 10,
+            cancelable:false,
+    
+            addClass: '',
+            mode: "slide",
+            useCSS: true,
+            cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+            easing: 'linear', //'for jquery animation',////
+    
+            speed: 400, //ms'
+            auto: false,
+            loop: true,
+            slideEndAnimation: true,
+            pause: 2000,
+    
+            keyPress: false,
+            controls: true,
+            prevHtml: '<span class="icon-arrow-circle-left"></span>',
+            nextHtml: '<span class="icon-arrow-circle-right"></span>',
+    
+            rtl:false,
+            adaptiveHeight:false,
+    
+            vertical:false,
+            verticalHeight:500,
+            vThumbWidth:100,
+    
+            thumbItem:10,
+            pager: true,
+            gallery: false,
+            galleryMargin: 5,
+            thumbMargin: 5,
+            currentPagerPosition: 'middle',
+    
+            enableTouch:true,
+            enableDrag:true,
+            freeMove:true,
+            swipeThreshold: 40,
+    
+            responsive : [],
+    
+            onBeforeStart: function (el) {},
+            onSliderLoad: function (el) {},
+            onBeforeSlide: function (el) {},
+            onAfterSlide: function (el) {},
+            onBeforeNextSlide: function (el) {},
+            onBeforePrevSlide: function (el) {}
+        });
+
+        $("#lightSlider2").lightSlider({
+            item: item,
+            autoWidth: false,
+            slideMove: 1, // slidemove will be 1 if loop is true
+            slideMargin: 10,
+    
+            addClass: '',
+            mode: "slide",
+            useCSS: true,
+            cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+            easing: 'linear', //'for jquery animation',////
+            cancelable:false,
+
+            speed: 500, //ms'
+            auto: true,
+            loop: true,
+            slideEndAnimation: true,
+            pause: 4500,
+            pauseOnHover: true,
+    
+            keyPress: false,
+            controls: true,
+            prevHtml: '<span class="icon-arrow-circle-left"></span>',
+            nextHtml: '<span class="icon-arrow-circle-right"></span>',
+    
+            rtl:false,
+            adaptiveHeight:false,
+    
+            vertical:false,
+            verticalHeight:500,
+            vThumbWidth:100,
+    
+            thumbItem:5,
+            pager: false,
+            gallery: false,
+            galleryMargin: 5,
+            thumbMargin: 5,
+            currentPagerPosition: 'middle',
+    
+            enableTouch:true,
+            enableDrag:true,
+            freeMove:true,
+            swipeThreshold: 40,
+    
+            responsive : [],
+    
+            onBeforeStart: function (el) {},
+            onSliderLoad: function (el) {},
+            onBeforeSlide: function (el) {},
+            onAfterSlide: function (el) {},
+            onBeforeNextSlide: function (el) {},
+            onBeforePrevSlide: function (el) {}
+        });
+
+    });    
+    function showModal(website, folder){
+        var pageAd = "portfolio/"+folder+"/" + website;
+        if(folder == 'web_template'){
+            $('.modal-header').show();
+            $('#previewModal').find('.modal-body').find('object').show();
+            $('#previewModal').find('.modal-body').find('.photo').css('display', 'none');
+            $('#previewModal').find('.modal-body').find('object').attr('data', pageAd);
+            $('#previewModal').find('h4').text(website);
+        } else {
+            $('.modal-header').hide();
+            $('#previewModal').find('.modal-body').css('height','90vh');
+            $('#previewModal').find('.modal-body').find('object').hide();
+            $('#previewModal').find('.modal-body').find('.photo').show().attr('src', pageAd);
+            $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
+        }
+    }
+
+    // to prevent r-click
+    /*
+        $(function() {
+            $(this).bind("contextmenu", function(e) {
+                e.preventDefault();
+            });
+        }); 
+*/
+  </script>
+
+
+<div id="previewModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4></h4>
+      </div>
+      <div class="modal-body">
+          <object type="text/html" data=""></object>
+          <img class="photo">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
   </body>
 </html>

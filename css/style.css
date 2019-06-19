@@ -1048,6 +1048,17 @@ h1, h2, h3, h4, h5, h6 {
       padding: 0;
       margin: 0;
     }
+    #portfolio_page .web .lSAction a .icon-arrow-circle-right,
+    #portfolio_page .web .lSAction a .icon-arrow-circle-left {
+      font-size: 2.5em;
+      color: #ff8c00;
+    }
+    #portfolio_page .graphic .lSAction a .icon-arrow-circle-right,
+    #portfolio_page .graphic .lSAction a .icon-arrow-circle-left {
+      font-size: 2.5em;
+      color: #f78888;
+    }
+
     #lightSlider3>li,
     #lightSlider2>li {
       position: relative;
@@ -1060,10 +1071,11 @@ h1, h2, h3, h4, h5, h6 {
     #lightSlider2 .preview {
       color: white;
       text-shadow: 0 0 3px black;
-      font-size: 1.75rem;
+      font-size: 2.5rem;
       position: absolute;
       bottom: .25rem;
       left: calc(50% - 13px);
+      opacity: .8;
     }
     #lightSlider3 .preview:hover,
     #lightSlider2 .preview:hover {

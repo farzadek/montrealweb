@@ -157,6 +157,7 @@
                     ?>
                 </ul>
             </div>
+<!--            
             <hr/>
             <div class="row mb-5 photo">
                 <div class="col-lg-6 section-title">
@@ -181,7 +182,7 @@
                     ?>
                 </ul>
             </div>
-
+-->
 
         </div>
     </div> 
@@ -259,7 +260,7 @@
     
             speed: 400, //ms'
             auto: false,
-            loop: false,
+            loop: true,
             slideEndAnimation: true,
             pause: 2000,
     
@@ -299,7 +300,7 @@
 
         $("#lightSlider2").lightSlider({
             item: item,
-            autoWidth: false,
+            autoWidth: true,
             slideMove: 1, // slidemove will be 1 if loop is true
             slideMargin: 10,
     
@@ -310,11 +311,12 @@
             easing: 'linear', //'for jquery animation',////
             cancelable:false,
 
-            speed: 400, //ms'
-            auto: false,
-            loop: false,
+            speed: 500, //ms'
+            auto: true,
+            loop: true,
             slideEndAnimation: true,
-            pause: 2000,
+            pause: 4500,
+            pauseOnHover: true,
     
             keyPress: false,
             controls: true,
@@ -328,8 +330,8 @@
             verticalHeight:500,
             vThumbWidth:100,
     
-            thumbItem:10,
-            pager: true,
+            thumbItem:5,
+            pager: false,
             gallery: false,
             galleryMargin: 5,
             thumbMargin: 5,
@@ -349,7 +351,7 @@
             onBeforeNextSlide: function (el) {},
             onBeforePrevSlide: function (el) {}
         });
-
+/*
         $("#lightSlider3").lightSlider({
             item: item,
             autoWidth: false,
@@ -363,10 +365,10 @@
             easing: 'linear', //'for jquery animation',////
     
             speed: 400, //ms'
-            auto: false,
-            loop: false,
+            auto: tru,
+            loop: true,
             slideEndAnimation: true,
-            pause: 2000,
+            pause: 4000,
             cancelable:false,
 
     
@@ -383,7 +385,7 @@
             vThumbWidth:100,
     
             thumbItem:10,
-            pager: true,
+            pager: false,
             gallery: false,
             galleryMargin: 5,
             thumbMargin: 5,
@@ -403,7 +405,7 @@
             onBeforeNextSlide: function (el) {},
             onBeforePrevSlide: function (el) {}
         });
-
+*/
     });    
     function showModal(website, folder){
         var pageAd = "../portfolio/"+folder+"/" + website; console.log(pageAd);
@@ -423,12 +425,13 @@
     }
 
     // to prevent r-click
+    /*
         $(function() {
             $(this).bind("contextmenu", function(e) {
                 e.preventDefault();
             });
         }); 
-
+*/
   </script>
 
 
