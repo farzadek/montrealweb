@@ -1093,6 +1093,16 @@ h1, h2, h3, h4, h5, h6 {
     #lightSlider2 .preview:hover {
       color: #428bca;
     }
+
+
+    #portfolio_page .web .portfolio h3{
+      margin-top: .5em;
+      font-size: 1.2em;
+      text-transform: capitalize;
+    }
+    #portfolio_page .web .portfolio .tags em {
+      margin-right: .45em;
+    }
 /* --------------------------------------------------------------------------------------------  */
 @media (min-width: 768px) {
       .site-footer ul {

@@ -270,7 +270,7 @@
                     <?php
                     $files = scandir('images/portfolio/web');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<sizeof($files);$i++){
+                    for($i=0;$i<8;$i++){
                         $imgSrc = 'images/portfolio/web/'.$files[$i];
                         $title = explode("$",$files[$i])[0];
                         $s = explode('$',$files[$i])[1];
@@ -294,7 +294,7 @@
                     ?>
                 </ul>
                 <div class="container">
-                  <a href="" class="btn btn-link btn-lg"><?php echo $texts['see_all'][$lang]; ?></a>
+                  <a href="./portfolio-web/" class="btn btn-link btn-lg"><?php echo $texts['see_all'][$lang]; ?></a>
                 </div>
             </div>
             <hr/>

@@ -1,5 +1,5 @@
 <?php
-  include_once('texts.php');
+  include_once('../pages/texts.php');
 
   $lang = 1;
   if(isset($_COOKIE['lang'])){
@@ -10,30 +10,21 @@
 <!DOCTYPE html>
 <html lang="<?php echo $lang==0?'en':'fr'; ?>">
   <head>
-    <title>MontrealWeb - A web agency to make beautiful websites</title>
+    <title>MontrealWeb - Portfolio</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="small web agency, we make beautiful websites">
+    <meta name="description" content="portfolio - small web agency, we make beautiful websites">
     
-    <meta name="og:title" property="og:title" content="MontrealWeb - A web agency to make beautiful websites">
+    <meta name="og:title" property="og:title" content="MontrealWeb - A web agency to make beautiful websites - portfolio">
     <meta name="robots" content="index, follow">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/icomoon/style.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../css/lightslider.css">
     
     
     <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
   
-    <link rel="stylesheet" href="../css/aos.css">
-    <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
-    
-
     <link rel="stylesheet" href="../css/style.css">
     
   </head>
@@ -104,85 +95,34 @@
                 </div>
             </div>
             <div class="row mb-5 web">
-                <ul id="lightSlider1">
+                <?php
+                $files = scandir('../images/portfolio/web');
+                array_splice($files, 0, 2);
+                $i = 0;
+                while($i<sizeof($files)){
+                    $imgSrc = '../images/portfolio/web/'.$files[$i];
+                    $title = explode("$",$files[$i])[0];
+                    $s = explode('$',$files[$i])[1];
+                    $s = substr($s,0,-4);
+                    $s = explode('_',$s);
+                ?>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 portfolio mb-2" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')">
+                    <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
+                    <h3><?php echo $title; ?></h3>
+                    <p class="tags">
                     <?php
-                    $files = scandir('../images/portfolio/web');
-                    array_splice($files, 0, 2);
-                    for($i=0;$i<sizeof($files);$i++){
-                        $imgSrc = '../images/portfolio/web/'.$files[$i];
-                        $title = explode("$",$files[$i])[0];
-                        $s = explode('$',$files[$i])[1];
-                        $s = substr($s,0,-4);
-                        $s = explode('_',$s);
+                      for($j=0;$j<sizeof($s);$j++){
+                        echo '<em>'.$s[$j].'</em>';
+                      } 
                     ?>
-                    <li>
-                        <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
-                        <h3><?php echo $title; ?></h3>
-                        <p class="tags">
-                            <?php
-                            for($j=0;$j<sizeof($s);$j++){
-                                echo '<em>'.$s[$j].'</em>';
-                            } 
-                            ?>
-                        </p>
-                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
-                    </li>
-                    <?php
-                    }
-                    ?>
+                    </p>
+                </div>
+                <?php
+                $i++;
+                }
+                ?>
 
-                </ul>
             </div>
-            <hr/>
-            <div class="row mb-5">
-                <div class="col-lg-6 section-title">
-                    <h2 class="title text-primary"><?php echo $texts['graphic_design'][$lang]; ?></h2>
-                </div>
-            </div>
-            <div class="row mb-5 graphic">
-                <ul id="lightSlider2">
-                    <?php
-                    $files = scandir('../images/portfolio/graphic');
-                    array_splice($files, 0, 2);
-                    for($i=0;$i<sizeof($files);$i++){
-                        $imgSrc = '../images/portfolio/graphic/'.$files[$i];
-                        $title = explode('$',$files[$i])[0];
-                    ?>
-                    <li>
-                        <img src="<?php echo '../images/portfolio/graphic/'.$files[$i];?>" alt="Image" class="img-fluid">
-                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'graphic')"><span class="icon-search-plus"></span></a>
-                    </li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </div>
-<!--            
-            <hr/>
-            <div class="row mb-5 photo">
-                <div class="col-lg-6 section-title">
-                    <h2 class="title text-primary"><?php echo $texts['photography'][$lang]; ?></h2>
-                </div>
-            </div>
-            <div class="row mb-5 photo">
-                <ul id="lightSlider3">
-                    <?php
-                    $files = scandir('../images/portfolio/photo');
-                    array_splice($files, 0, 2);
-                    for($i=0;$i<sizeof($files);$i++){
-                        $imgSrc = '../images/portfolio/photo/'.$files[$i];
-                        $title = explode("$",$files[$i])[0];
-                    ?>
-                    <li>
-                        <img src="<?php echo '../images/portfolio/photo/'.$files[$i];?>" alt="Image" class="img-fluid">
-                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'photo')"><span class="icon-search-plus"></span></a>
-                    </li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </div>
--->
 
         </div>
     </div> 
