@@ -270,7 +270,7 @@
                     <?php
                     $files = scandir('images/portfolio/web');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<sizeof($files);$i++){
+                    for($i=0;$i<8;$i++){
                         $imgSrc = 'images/portfolio/web/'.$files[$i];
                         $title = explode("$",$files[$i])[0];
                         $s = explode('$',$files[$i])[1];
@@ -278,7 +278,8 @@
                         $s = explode('_',$s);
                     ?>
                     <li>
-                        <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
+                        <img src="<?php echo $imgSrc;?>" alt="Image" class="img-fluid">
+                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><span class="icon-search-plus"></span></a>
                         <h3><?php echo $title; ?></h3>
                         <p class="tags">
                             <?php
@@ -287,12 +288,14 @@
                             } 
                             ?>
                         </p>
-                        <a class="btn btn-warning btn-xs" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><?php echo $texts['preview_the_project'][$lang]; ?></a>
                     </li>
                     <?php
                     }
                     ?>
                 </ul>
+                <div class="container">
+                  <a href="" class="btn btn-link btn-lg"><?php echo $texts['see_all'][$lang]; ?></a>
+                </div>
             </div>
             <hr/>
             <div class="row mb-5">
@@ -305,7 +308,7 @@
                     <?php
                     $files = scandir('images/portfolio/graphic');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<sizeof($files);$i++){
+                    for($i=0;$i<10;$i++){
                         $imgSrc = 'images/portfolio/graphic/'.$files[$i];
                         $title = explode('$',$files[$i])[0];
                     ?>
@@ -317,6 +320,9 @@
                     }
                     ?>
                 </ul>
+                <div class="container">
+                  <a href="" class="btn btn-link btn-lg"><?php echo $texts['see_all'][$lang]; ?></a>
+                </div>
             </div>
 
 
@@ -640,7 +646,7 @@
             vThumbWidth:100,
     
             thumbItem:5,
-            pager: false,
+            pager: true,
             gallery: false,
             galleryMargin: 5,
             thumbMargin: 5,

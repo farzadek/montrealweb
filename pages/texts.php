@@ -20,7 +20,7 @@
     $texts['debug_improvement_text'] = ['Is there any problem in your website? Do you need to make something better? Talk to us, let us find the best solution by a reasonable cost.', 'Y a-t-il un problème sur votre site web? Avez-vous besoin de faire quelque chose de mieux? Parlez-nous, laissez-nous trouver la meilleure solution à un coût raisonnable.'];
     $texts['some_of_our_works'] = ['SOME OF OUR WORKS', 'QUELQUES-UNS DE NOS TRAVAUX'];
     $texts['some_of_our_works_text'] = ['You can find here some of our works, included Web programming, web design, graphic design or photography.', 'Vous pouvez trouver ici certaines de nos œuvres, y compris la programmation Web, la conception Web, la conception graphique ou la photographie.'];
-    $texts['visit_portfolio_page'] = ['Visit our Portfolio page', 'Visitez notre page Portfolio'];
+    $texts['see_all'] = ['See all...', 'Visitez tout...'];
     $texts['we_are_expert_in_web'] = ['We Are Expert In WEB', 'Nous sommes experts en Web'];
     $texts['we_are_expert_in_web_text'] = ['After years of education in IT, Computer application programming, Web technology and Infographie, and more than 10 years of experiences in big, medium or small size projects, now we can say that we are expert in some areas in web and IT.', 'Après des années de formation en informatique, en programmation d\'applications, en technologie Web et en infographie, et plus de 10 ans d\'expérience dans des projets de grande, moyenne ou petite taille, nous pouvons maintenant affirmer que nous sommes des experts dans certains domaines du web et de l\'informatique.'];
     $texts['frontend_development'] = ['Frontend Development', 'Développement Frontend'];

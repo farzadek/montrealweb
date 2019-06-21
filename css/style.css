@@ -936,13 +936,18 @@ h1, h2, h3, h4, h5, h6 {
       box-shadow: 0 0 7px 3px #ccc;
     }
 
-    #portfolio-section .btn{
+    #portfolio-section .btn-warning{
       background-color: #ff8c00 !important;
       border-color: #FF7b00 !important;
       margin: 0 auto;
       display: table;
     }
-
+    #portfolio-section .btn-link {
+      color: #ffcd04 !important;
+      border-color: #eebc03 !important;
+      text-decoration: none;
+      float: right;
+    }
     #portfolio_page .tags em{
       font-size: .8em;
       padding: .15em .5em;
@@ -1067,7 +1072,14 @@ h1, h2, h3, h4, h5, h6 {
     #lightSlider2>li img {
       cursor: auto;
     }
-    #lightSlider3 .preview,
+    #lightSlider1 .preview{
+      color: white;
+      font-size: 2.5rem;
+      margin: -1em auto 0;
+      display: table;
+      text-shadow: 0 0 3px black;
+      opacity: .85;
+    }
     #lightSlider2 .preview {
       color: white;
       text-shadow: 0 0 3px black;
@@ -1075,9 +1087,9 @@ h1, h2, h3, h4, h5, h6 {
       position: absolute;
       bottom: .25rem;
       left: calc(50% - 13px);
-      opacity: .8;
+      opacity: .85;
     }
-    #lightSlider3 .preview:hover,
+    #lightSlider1 .preview:hover,
     #lightSlider2 .preview:hover {
       color: #428bca;
     }
