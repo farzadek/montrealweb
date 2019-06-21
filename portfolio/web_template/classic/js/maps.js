@@ -7,6 +7,6 @@
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
-          icon: 'images/map-marker.png'
+          icon: './images/map-marker.png'
         });
       }

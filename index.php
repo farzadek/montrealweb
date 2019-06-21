@@ -83,16 +83,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <!-- <link rel="stylesheet" href="css/animate.css">-->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <!-- <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/bootstrap-datepicker.css">-->
     <link rel="stylesheet" href="css/lightslider.css">
     
     
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   
-    <link rel="stylesheet" href="css/aos.css">
+    <!-- <link rel="stylesheet" href="css/aos.css"> -->
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     
 
@@ -270,7 +270,7 @@
                     <?php
                     $files = scandir('images/portfolio/web');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<8;$i++){
+                    for($i=0;$i<sizeof($files);$i++){
                         $imgSrc = 'images/portfolio/web/'.$files[$i];
                         $title = explode("$",$files[$i])[0];
                         $s = explode('$',$files[$i])[1];
