@@ -928,6 +928,7 @@ h1, h2, h3, h4, h5, h6 {
       top: 50%;
       left: 50%;
       width: fit-content;
+      font-size: 1.25em;
     }
 
 
@@ -1130,13 +1131,14 @@ h1, h2, h3, h4, h5, h6 {
     }
     #portfolio_page .gal > div{
       position: relative;
+      display: inline-block;
     }
-    #portfolio_page .gal .icon-search-plus {
+    #portfolio_page elem .icon-search-plus {
       font-size: 5em;
       position: absolute;
       top: 50%;
       left: 50%;
-      opacity: .5;
+      opacity: .4;
       color: white;
       cursor: pointer;
       -webkit-transform: translate(-50%, -50%);
@@ -1144,17 +1146,33 @@ h1, h2, h3, h4, h5, h6 {
       text-shadow: 0 0 5px #444;
     }
 
-    .gal {
-      -webkit-column-count: 4; /* Chrome, Safari, Opera */
-      -moz-column-count: 4; /* Firefox */
-      column-count: 4;      
-    }	
-    .gal img{ 
-      width: 100%; 
-      padding: 7px 0;
+    .images > elem{
+      height: 250px;
+      width: calc(50% - .7em);
+      display: inline-flex;
+      margin: 0 .25em 1em;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 2px 2px 5px 0 #999;
+    }
+    .images > elem > img{
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      width: 100%;
+      object-fit: cover;
+      height: 100%;
     }
 /* --------------------------------------------------------------------------------------------  */
-@media (min-width: 768px) {
+      @media screen and (min-width: 992px) {
+        .images>elem {
+          width: calc(25% - .75em);
+        }
+      }
+
+      @media (min-width: 768px) {
       .site-footer ul {
         margin: 0 auto;
       }
@@ -1204,11 +1222,10 @@ h1, h2, h3, h4, h5, h6 {
       .site-footer span[class^="icon-"] {
         font-size: 1.75em;
       }
-      .gal {
-        -webkit-column-count: 3; /* Chrome, Safari, Opera */
-        -moz-column-count: 3; /* Firefox */
-        column-count: 3;
+      .images>elem {
+        width: calc(33.3% - .75em);
       }
+
   }
 /* --------------------------------------------------------------------------------------------  */
   @media (max-width: 550px) {
@@ -1302,10 +1319,5 @@ h1, h2, h3, h4, h5, h6 {
     }
     .lSAction>a{
       top: 55%;
-    }
-    .gal {
-      -webkit-column-count: 2; /* Chrome, Safari, Opera */
-      -moz-column-count: 2; /* Firefox */
-      column-count: 2;
     }
 }

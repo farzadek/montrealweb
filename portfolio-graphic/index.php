@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
   </head>
   
   <script>
@@ -32,6 +34,13 @@
       document.cookie = "lang=" + cvalue + ";path=/";
       location.reload();
     }
+    $(function() {
+      $('.lazy').lazy({
+        effect: "fadeIn",
+        effectTime: 2000,
+        threshold: 0
+      })
+    });
   </script>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -92,6 +101,25 @@
                 </div>
             </div>
 
+            <div class="images">
+            <?php
+              $files = scandir('../images/portfolio/graphic');
+              array_splice($files, 0, 2);
+              $i = 0;
+              while($i<sizeof($files)){
+                $imgSrc = '../images/portfolio/graphic/'.$files[$i];
+                $title = explode("$",$files[$i])[0];
+            ?>
+              <elem data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')">
+                <img class="lazy" data-src="<?php echo $imgSrc; ?>" alt="image <?php echo $title; ?>" >
+                <span class="icon-search-plus"></span>
+              </elem>
+            <?php
+                $i++;
+              }
+            ?>
+          </div>
+<!--
                 <div class="col-md-12">
                   <div class="row">
 	                  <div class="gal">
@@ -104,7 +132,7 @@
                       $title = explode("$",$files[$i])[0];
                     ?>
                       <div data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')">
-                        <img src="<?php echo $imgSrc; ?>" alt="" >
+                        <img class="lazy" data-src="<?php echo $imgSrc; ?>" alt="image <?php echo $title; ?>" >
                         <span class="icon-search-plus"></span>
                       </div>
                     <?php
@@ -114,7 +142,7 @@
 	                  </div>	
                   </div>
                 </div>
-
+-->
             </div>
 
         </div>
@@ -123,15 +151,14 @@
     <footer class="site-footer">
       <div class="container">
         <div class="row">
-           
-                <ul class="list-unstyled">
-                    <li><a href="#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
-                    <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
-                    <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
-                    <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                    <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
-                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                </ul>
+          <ul class="list-unstyled">
+            <li><a href="#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
+            <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
+            <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
+            <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
+            <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
+            <li><a href="#contact-section" class="nav-link">Contact</a></li>
+          </ul>
         </div>
         <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">
@@ -139,11 +166,8 @@
               <a href="https://www.instagram.com/farzadek/" target="_blank" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
               <a href="https://www.linkedin.com/in/farzadkamali" target="_blank" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
             </div>
-            
             <p>Copyright &copy; 2016 - <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
-          
-          </div>
-          
+          </div> 
         </div>
       </div>
     </footer>
@@ -151,13 +175,14 @@
 
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
+
   <script src="../js/owl.carousel.min.js"></script>
   <script src="../js/aos.js"></script>
   <script src="../js/jquery.sticky.js"></script>
   <script src="../js/stickyfill.min.js"></script>
   <script src="../js/jquery.easing.1.3.js"></script>
-  
   <script src="../js/jquery.fancybox.min.js"></script>
+
   <script src="../js/main.js"></script>
 
   <script>
@@ -186,23 +211,23 @@
   </script>
 
 
-<div id="previewModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
+    <div id="previewModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4></h4>
-      </div>
-      <div class="modal-body">
-          <object type="text/html" data=""></object>
-          <img class="photo">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4></h4>
+          </div>
+          <div class="modal-body">
+              <object type="text/html" data=""></object>
+              <img class="photo">
+          </div>
+        </div>
+
       </div>
     </div>
-
-  </div>
-</div>
 
 
   </body>
