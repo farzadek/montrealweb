@@ -15,18 +15,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="portfolio - small web agency, we make beautiful websites">
     
-    <meta name="og:title" property="og:title" content="MontrealWeb - A web agency to make beautiful websites - portfolio">
+    <meta name="og:title" property="og:title" content="MontrealWeb - A web agency to make beautiful websites - portfolio Graphic design">
     <meta name="robots" content="index, follow">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    
-    
+    <link rel="stylesheet" href="../css/bootstrap.min.css">  
     <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-  
     <link rel="stylesheet" href="../css/style.css">
-    
+    <script src="../js/jquery-3.3.1.min.js"></script>
   </head>
   
   <script>
@@ -47,7 +44,7 @@
                 </div>
             </div>
         <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
+    </div>
     
     
     <div class="site-navbar-wrap">
@@ -91,43 +88,37 @@
             <div class="row mb-5 webfolio">
                 <div class="col-lg-6 section-title">
                     <span class="sub-title mb-2 d-block"><?php echo $texts['portfolio'][$lang]; ?></span>
-                    <h2 class="title text-primary">Web</h2>
+                    <h2 class="title text-primary"><?php echo $texts['graphic_design'][$lang]; ?></h2>
                 </div>
             </div>
-            <div class="row mb-5 web">
-                <?php
-                $files = scandir('../images/portfolio/web');
-                array_splice($files, 0, 2);
-                $i = 0;
-                while($i<sizeof($files)){
-                    $imgSrc = '../images/portfolio/web/'.$files[$i];
-                    $title = explode("$",$files[$i])[0];
-                    $s = explode('$',$files[$i])[1];
-                    $s = substr($s,0,-4);
-                    $s = explode('_',$s);
-                ?>
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 portfolio mb-2" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')">
-                    <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
-                    <span class="icon-search-plus"></span>
-                    <h3><?php echo $title; ?></h3>
-                    <p class="tags">
+
+                <div class="col-md-12">
+                  <div class="row">
+	                  <div class="gal">
                     <?php
-                      for($j=0;$j<sizeof($s);$j++){
-                        echo '<em>'.$s[$j].'</em>';
-                      } 
+                    $files = scandir('../images/portfolio/graphic');
+                    array_splice($files, 0, 2);
+                    $i = 0;
+                    while($i<sizeof($files)){
+                      $imgSrc = '../images/portfolio/graphic/'.$files[$i];
+                      $title = explode("$",$files[$i])[0];
                     ?>
-                    </p>
+                      <div data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')">
+                        <img src="<?php echo $imgSrc; ?>" alt="" >
+                        <span class="icon-search-plus"></span>
+                      </div>
+                    <?php
+                      $i++;
+                    }
+                    ?>
+	                  </div>	
+                  </div>
                 </div>
-                <?php
-                $i++;
-                }
-                ?>
 
             </div>
 
         </div>
     </div> 
-
   
     <footer class="site-footer">
       <div class="container">
@@ -158,7 +149,6 @@
     </footer>
   </div>
 
-  <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
   <script src="../js/owl.carousel.min.js"></script>
@@ -169,7 +159,6 @@
   
   <script src="../js/jquery.fancybox.min.js"></script>
   <script src="../js/main.js"></script>
-  <script src="../js/lightslider.js"></script>
 
   <script>
     function changeLang(lang) {
@@ -177,29 +166,23 @@
       document.cookie = "lang=" + cvalue + ";path=/";
       location.reload();
     }
-    function showModal(website, folder){
-        var pageAd = "../portfolio/"+folder+"/" + website; console.log(pageAd);
-        if(folder == 'web_template'){
-            $('.modal-header').show();
-            $('#previewModal').find('.modal-body').find('object').show();
-            $('#previewModal').find('.modal-body').find('.photo').css('display', 'none');
-            $('#previewModal').find('.modal-body').find('object').attr('data', pageAd);
-            $('#previewModal').find('h4').text(website);
-        } else {
-            $('.modal-header').hide();
-            $('#previewModal').find('.modal-body').css('height','90vh');
-            $('#previewModal').find('.modal-body').find('object').hide();
-            $('#previewModal').find('.modal-body').find('.photo').show().attr('src', pageAd);
-            $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
-        }
+    function showModal(website){
+        var pageAd = "../portfolio/graphic/" + website;
+        $('.modal-header').hide();
+        $('#previewModal').find('.modal-body').css('height','90vh');
+        $('#previewModal').find('.modal-body').find('object').hide();
+        $('#previewModal').find('.modal-body').find('.photo').show().attr('src', pageAd);
+        $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
     }
 
     // to prevent r-click
+    /*
         $(function() {
             $(this).bind("contextmenu", function(e) {
                 e.preventDefault();
             });
         }); 
+*/
   </script>
 
 

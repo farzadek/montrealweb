@@ -1095,13 +1095,63 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 
+    #portfolio_page .webfolio h2{
+      text-transform: uppercase;
+    }
     #portfolio_page .web .portfolio h3{
       margin-top: .5em;
       font-size: 1.2em;
       text-transform: capitalize;
     }
+    #portfolio_page .web .portfolio .icon-search-plus {
+      font-size: 6em;
+      position: absolute;
+      top: .25em;
+      left: 50%;
+      opacity: .5;
+      color: white;
+      cursor: pointer;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      text-shadow: 0 0 5px #444;
+    }
     #portfolio_page .web .portfolio .tags em {
       margin-right: .45em;
+      font-size: .7em;
+    }
+
+    #portfolio_page .graphic .portfolio .item{
+      cursor: pointer;
+      position: relative;
+    }
+    #portfolio_page .graphic .portfolio .item img{
+      width: 100%;
+      height: auto;
+    }
+    #portfolio_page .gal > div{
+      position: relative;
+    }
+    #portfolio_page .gal .icon-search-plus {
+      font-size: 5em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: .5;
+      color: white;
+      cursor: pointer;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-shadow: 0 0 5px #444;
+    }
+
+    .gal {
+      -webkit-column-count: 4; /* Chrome, Safari, Opera */
+      -moz-column-count: 4; /* Firefox */
+      column-count: 4;      
+    }	
+    .gal img{ 
+      width: 100%; 
+      padding: 7px 0;
     }
 /* --------------------------------------------------------------------------------------------  */
 @media (min-width: 768px) {
@@ -1153,6 +1203,11 @@ h1, h2, h3, h4, h5, h6 {
       }
       .site-footer span[class^="icon-"] {
         font-size: 1.75em;
+      }
+      .gal {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
       }
   }
 /* --------------------------------------------------------------------------------------------  */
@@ -1248,4 +1303,9 @@ h1, h2, h3, h4, h5, h6 {
     .lSAction>a{
       top: 55%;
     }
-  }
+    .gal {
+      -webkit-column-count: 2; /* Chrome, Safari, Opera */
+      -moz-column-count: 2; /* Firefox */
+      column-count: 2;
+    }
+}

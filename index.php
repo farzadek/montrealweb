@@ -83,19 +83,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="css/animate.css">-->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
-    <!-- <link rel="stylesheet" href="css/bootstrap-datepicker.css">-->
     <link rel="stylesheet" href="css/lightslider.css">
-    
-    
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-  
-    <!-- <link rel="stylesheet" href="css/aos.css"> -->
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-    
-
     <link rel="stylesheet" href="css/style.css">
     
   </head>
@@ -270,7 +261,7 @@
                     <?php
                     $files = scandir('images/portfolio/web');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<8;$i++){
+                    for($i=0;$i<6;$i++){
                         $imgSrc = 'images/portfolio/web/'.$files[$i];
                         $title = explode("$",$files[$i])[0];
                         $s = explode('$',$files[$i])[1];
@@ -308,7 +299,7 @@
                     <?php
                     $files = scandir('images/portfolio/graphic');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<10;$i++){
+                    for($i=0;$i<8;$i++){
                         $imgSrc = 'images/portfolio/graphic/'.$files[$i];
                         $title = explode('$',$files[$i])[0];
                     ?>
@@ -321,7 +312,7 @@
                     ?>
                 </ul>
                 <div class="container">
-                  <a href="" class="btn btn-link btn-lg"><?php echo $texts['see_all'][$lang]; ?></a>
+                  <a href="./portfolio-graphic/" class="btn btn-link btn-lg"><?php echo $texts['see_all'][$lang]; ?></a>
                 </div>
             </div>
 
@@ -519,6 +510,7 @@
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                    <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"> <?php echo $texts['lang'][$lang]; ?></a></li>
                 </ul>
         </div>
         <div class="row pt-5 mt-5 text-center">
