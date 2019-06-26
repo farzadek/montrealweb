@@ -88,7 +88,7 @@
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/style.css">
-    
+    <script src="js/jquery-3.3.1.min.js"></script>
   </head>
 
   <script>
@@ -443,6 +443,17 @@
           </div>
         </div>
 
+    <div class="site-section bg-light" id="insta-data">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col section-title">
+            <span class="sub-title mb-2 d-block"><?php echo $texts['social_network'][$lang]; ?></span>
+            <h2 class="title text-primary"><?php echo $texts['insta_posts'][$lang]; ?></h2>
+          </div>
+        </div>
+        <ul id="instafeed"></ul>
+      </div>
+    </div>        
 
 
     <div class="site-section" id="contact-section">
@@ -530,7 +541,6 @@
     </footer>
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
@@ -544,6 +554,34 @@
   <script src="js/main.js"></script>
 
     <script>
+    window.addEventListener("load", function(){
+
+      var token = '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc'/*,
+          num_photos = 4*/;
+      $.ajax({
+        url: 'https://api.instagram.com/v1/users/self/media/recent',
+        dataType: 'jsonp',
+        type: 'GET',
+        data: {access_token: token/*, count: num_photos*/},
+        success: function(data){
+          for( x in data.data ){
+            if(
+              data.data[x].tags.indexOf("uidesign")>-1 ||
+              data.data[x].tags.indexOf("graphicdesign")>-1 ||
+              data.data[x].tags.indexOf("photography")>-1 ||
+              data.data[x].tags.indexOf("web")>-1
+              ){
+              $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+'"></div>');
+            }
+          }
+        },
+        error: function(data){
+          console.log(data);
+        }
+      });
+
+    });
+
     $(document).ready(function() {
         var item = 3;
         if( $(window).width() < 768){ item = 2;}
@@ -677,6 +715,24 @@
             $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
         }
     }
+/*
+    var feed = new Instafeed({
+        get: 'user',
+        userId: '1c1827a4d44a43e79363b0fd644976db'
+    });
+    feed.run();
+    */
+/*
+    var userFeed = new Instafeed({
+        get: 'user',
+        userId: '1c1827a4d44a43e79363b0fd644976db',
+        accessToken: '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc',
+    });
+    userFeed.run();
+*/
+
+
+
 
     // to prevent r-click
     /*
