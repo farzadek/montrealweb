@@ -853,18 +853,18 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(255, 0, 0, .5);
     padding: .25em .5em;
     border-radius: 4px;
-    margin-top: 4px;
+    margin: 4px 15px 0;
     width: 100%;
-    line-height: 1.2;
+    vertical-align: middle;
   }
   p.succ{
     color: white;
-    background-color: rgba(255, 0, 0, .5);
+    background-color: rgba(60, 150, 0, 0.5);
     padding: .25em .5em;
     border-radius: 4px;
-    margin-top: 4px;
+    margin: 4px 15px 0;
     width: 100%;
-    line-height: 1.2;
+    vertical-align: middle;
   }
   input.err,
   textarea.err {
@@ -914,14 +914,20 @@ h1, h2, h3, h4, h5, h6 {
     #contact-section .form-control:focus {
       border-color: #006666 !important;
     }
+    #contact-section .icon-times-circle-o,
+    #contact-section .icon-check-circle-o {
+      margin-right: .2em;
+      font-size: 1.5em;
+      vertical-align: middle;
+    }
 
-    #contact_form .map iframe {
+    #contact-section .map iframe {
       border: none;
       height: 300px;
       width: 100%;
     }
 
-    #contact_form .map a {
+    #contact-section .map a {
       color: white;
       transform: translate(-50%, -50%);
       position: absolute;

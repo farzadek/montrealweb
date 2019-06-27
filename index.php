@@ -47,9 +47,11 @@
 
       $msg = '';
       if(!$findError){
-          $msg = '<p style="font-size:12px">NAME: <strong>$name</strong></p><p style="font-size:12px">EMAIL: <strong>$email</strong></p>';
-          $msg .= '<p style="font-size:12px">PHONE: <strong>$phone</strong></p><p style="font-size:13px">$message</p>';
-          if(mail("farzadek@gmail.com","from MontrealWeb.ca",$msg)){
+          $msg = '<body><html><p style="font-size:14px">NAME: <strong>'.$name.'</strong></p><br/><p style="font-size:14px">EMAIL: <strong>'.$email.'</strong></p><br/>';
+          $msg .= '<p style="font-size:14px">PHONE: <strong>'.$phone.'</strong></p><br/><p style="font-size:15px">'.$message.'</p></body></html>';
+          $headers = "MIME-Version: 1.0\r\n";
+          $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+          if(mail("farzadek@gmail.com","from MontrealWeb.ca",$msg, $headers)){
               $succ = true;
               $msg = '';
               if($email){
@@ -57,8 +59,6 @@
                   $msg .= '<p>We received your message and we\'ll contact you as soon as possible.</p>';
                   $msg .= '<p>Have a nice day.</p>';
                   $msg .= '<p>Lili Ashadi - MontrealWEB.ca</p>';
-                  $headers = "MIME-Version: 1.0\r\n";
-                  $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                   mail($email,"Message from MontrealWeb.ca",$msg, $headers);
               }
           } else { 
@@ -74,12 +74,29 @@
 <!DOCTYPE html>
 <html lang="<?php echo $lang==0?'en':'fr'; ?>">
   <head>
-    <title>MontrealWeb - A web agency to make beautiful websites</title>
+    <!-- analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142854475-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-142854475-1');
+    </script>
+
+    <!-- tag anager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KBD2M2B');</script>
+
+    <?php echo $lang==0?'<title>MontrealWeb - A family Web and Graphic design agency in Longueuil</title>':'<title>MontrealWeb - Une agence familiale de graphisme et Web à Longueuil</title>';?>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="en,fr">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="small web agency, we make beautiful websites">
+    <meta name="description" content="A reasonable price for a perfect website. We are specialist in making beautiful websites and professional graphic design.">
     
-    <meta name="og:title" property="og:title" content="MontrealWeb - A web agency to make beautiful websites">
+    <meta name="og:title" property="og:title" content="A reasonable price for a perfect website. We are specialist in making beautiful websites and professional graphic design.">
     <meta name="robots" content="index, follow">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
@@ -102,16 +119,20 @@
   </script>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBD2M2B"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
   <div class="site-wrap">
     <div class="site-mobile-menu site-navbar-target">
-    <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-    </div>
-    <div class="site-mobile-menu-body"></div>
-</div> <!-- .site-mobile-menu -->
+      <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+              <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
     
     
     <div class="site-navbar-wrap">
@@ -478,28 +499,28 @@
             <div class="col-12">
               <input type="text" name="name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>" placeholder="<?php echo $texts['name'][$lang]; ?>">
             </div>
-            <?php echo $error['name']?'<p class="err">'.$error['name'].'</p>':'';?>
+            <?php echo $error['name']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['name'].'</p>':'';?>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <input type="phone" value="<?php echo $phone; ?>" name="phone" class="form-control <?php echo $error['phone']?'err':''; ?>" placeholder="<?php echo $texts['phone'][$lang]; ?>">
             </div>
-            <?php echo $error['phone']?'<p class="err">'.$error['phone'].'</p>':'';?>
+            <?php echo $error['phone']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['phone'].'</p>':'';?>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo $error['email']?'err':''; ?>" placeholder="Email">
             </div>
-            <?php echo $error['email']?'<p class="err">'.$error['email'].'</p>':'';?>
+            <?php echo $error['email']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['email'].'</p>':'';?>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <textarea class="form-control <?php echo $error['message']?'err':''; ?>"  name="message" id="" cols="30" rows="10" placeholder="Message"><?php echo $message; ?></textarea>
             </div>
-            <?php echo $error['message']?'<p class="err">'.$error['message'].'</p>':'';?>
+            <?php echo $error['message']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['message'].'</p>':'';?>
           </div>
 
           <div class="row">
@@ -507,8 +528,8 @@
               <button type="submit" class="btn btn-primary btn-sm" name="submitted">Send Message</button>
             </div>
           </div>
-          <?php echo ($submitted && $succ)?'<p class="succ">Your message received! We will contact you as soon as possible</p>':'';?>
-          <?php echo ($submitted && $error['mail'])?'<p class="succ">'.$error['mail'].'</p>':'';?>
+          <?php echo ($submitted && $succ)?'<p class="succ"><span class="icon-check-circle-o"></span> Your message received! We will contact you as soon as possible</p>':'';?>
+          <?php echo ($submitted && $error['mail'])?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['mail'].'</p>':'';?>
         </form>
       </div>
     </div> <!-- END .site-section -->
@@ -524,7 +545,7 @@
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                    <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"> <?php echo $texts['lang'][$lang]; ?></a></li>
+                    <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"> <?php echo $texts['lang'][$lang]; ?></a></li>
                 </ul>
         </div>
         <div class="row pt-5 mt-5 text-center">
@@ -550,7 +571,6 @@
   <script src="js/jquery.sticky.js"></script>
   <script src="js/stickyfill.min.js"></script>
   <script src="js/jquery.easing.1.3.js"></script>
-  
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/lightslider.js"></script>
   <script src="js/main.js"></script>
@@ -718,25 +738,7 @@
             $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
         }
     }
-/*
-    var feed = new Instafeed({
-        get: 'user',
-        userId: '1c1827a4d44a43e79363b0fd644976db'
-    });
-    feed.run();
-    */
-/*
-    var userFeed = new Instafeed({
-        get: 'user',
-        userId: '1c1827a4d44a43e79363b0fd644976db',
-        accessToken: '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc',
-    });
-    userFeed.run();
-*/
-
-
-
-
+    
     // to prevent r-click
     /*
         $(function() {
