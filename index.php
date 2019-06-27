@@ -57,7 +57,9 @@
                   $msg .= '<p>We received your message and we\'ll contact you as soon as possible.</p>';
                   $msg .= '<p>Have a nice day.</p>';
                   $msg .= '<p>Lili Ashadi - MontrealWEB.ca</p>';
-                  mail($email,"Message from MontrealWeb.ca",$msg);
+                  $headers = "MIME-Version: 1.0\r\n";
+                  $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+                  mail($email,"Message from MontrealWeb.ca",$msg, $headers);
               }
           } else { 
               $succ = false; 
@@ -458,7 +460,6 @@
 
     <div class="site-section" id="contact-section">
       <div class="container">
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'#contact_form'; ?>" class="contact-form" id="contact_form" novalidate>
           <div class="section-title text-center mb-5">
             <span class="sub-title mb-2 d-block"><?php echo $texts['get_in_touch'][$lang]; ?></span>
             <div class="row mb-5 mt-4 map">
@@ -472,6 +473,7 @@
             <h2 class="title text-primary"><?php echo $texts['contact_us'][$lang]; ?></h2>
           </div>
 
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'#contact_form'; ?>" class="contact-form" id="contact_form" novalidate>
           <div class="row mb-4">
             <div class="col-12">
               <input type="text" name="name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>" placeholder="<?php echo $texts['name'][$lang]; ?>">
@@ -569,6 +571,7 @@
               data.data[x].tags.indexOf("uidesign")>-1 ||
               data.data[x].tags.indexOf("graphicdesign")>-1 ||
               data.data[x].tags.indexOf("photography")>-1 ||
+              data.data[x].tags.indexOf("motrealweb")>-1 ||
               data.data[x].tags.indexOf("web")>-1
               ){
               $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+'"></div>');

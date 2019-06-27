@@ -33,7 +33,7 @@
     $texts['sales_manager_accountant'] = ['Sales manager & Accountant', 'Directrice des ventes et Comptable'];
     $texts['lili_text'] = ['A perfect sales manager and Financial manager. She educated in "Theoretical Economy" and "Accounting". She has more than 5 years of experiences as Sales Manager and 2 years as Accounting Technician.', 'Directrice commercial et directrice financier. Elle a étudié en "Économie théorique" et en "Comptabilité". Elle a plus de 5 ans d\'expérience en tant que responsable des ventes et 2 ans en tant que technicienne en comptabilité.'];
     $texts['motivators'] = ['Motivators', 'Motivatrices'];
-    $texts['motivators_text'] = ['Céline, is 3 years old and Caroline, is less than a year. They are expert in their role as Life Motivator.', 'Céline, a 3 ans et Caroline, a moin d,un an. Ils sont experts dans leur rôle de motivateur de la vie.'];
+    $texts['motivators_text'] = ['Céline, is 3 years old and Caroline, is less than a year. They are expert in their role as Life Motivator.', 'Céline, a 3 ans et Caroline, a moin d\'un an. Ils sont experts dans leur rôle de motivateur de la vie.'];
     $texts['get_in_touch'] = ['GET IN TOUCH', 'ENTRER EN CONTACT'];
     $texts['contact_us'] = ['Contact Us', 'Contactez nous'];
     $texts['name'] = ['Name', 'Nom complet'];
