@@ -158,7 +158,7 @@
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
+                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link jsChangeLangHeader"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
                   </ul>
                 </div>
               </nav>
@@ -293,7 +293,7 @@
                     ?>
                     <li>
                         <img src="<?php echo $imgSrc;?>" alt="Image" class="img-fluid">
-                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><span class="icon-search-plus"></span></a>
+                        <a class="preview jsPreviewWebIndex" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><span class="icon-search-plus"></span></a>
                         <h3><?php echo $title; ?></h3>
                         <p class="tags">
                             <?php
@@ -328,7 +328,7 @@
                     ?>
                     <li>
                         <img src="<?php echo 'images/portfolio/graphic/'.$files[$i];?>" alt="Image" class="img-fluid">
-                        <a class="preview" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'graphic')"><span class="icon-search-plus"></span></a>
+                        <a class="preview jsPreviewGraphicIndex" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'graphic')"><span class="icon-search-plus"></span></a>
                     </li>
                     <?php
                     }
@@ -525,7 +525,7 @@
 
           <div class="row">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-sm" name="submitted">Send Message</button>
+              <button type="submit" class="btn btn-primary btn-sm jsContactSubmit" name="submitted">Send Message</button>
             </div>
           </div>
           <?php echo ($submitted && $succ)?'<p class="succ"><span class="icon-check-circle-o"></span> Your message received! We will contact you as soon as possible</p>':'';?>
@@ -545,7 +545,7 @@
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
-                    <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"> <?php echo $texts['lang'][$lang]; ?></a></li>
+                    <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link jsChangeLangFooter"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"> <?php echo $texts['lang'][$lang]; ?></a></li>
                 </ul>
         </div>
         <div class="row pt-5 mt-5 text-center">
@@ -681,7 +681,7 @@
             cancelable:false,
 
             speed: 500, //ms'
-            auto: true,
+            auto: false,
             loop: true,
             slideEndAnimation: true,
             pause: 4500,
