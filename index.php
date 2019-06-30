@@ -108,6 +108,8 @@
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.3.1.min.js"></script>
+    <link rel="shortcut icon" href="images/mw.ico" />
+    <link rel="apple-touch-icon" href="images/mw.ico" />
   </head>
 
   <script>
@@ -141,7 +143,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-6 col-md-4">
-              <h1 class="my-0 site-logo"><a href="<?php echo $_SERVER['PHP_SELF']?>">MontrealWEB</a></h1>
+              <h1 class="my-0 site-logo"><a href="<?php echo $_SERVER['PHP_SELF']?>"><img src="images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
             </div>
             <div class="col-6 col-md-8">
               <nav class="site-navigation text-right" role="navigation">
@@ -292,7 +294,7 @@
                         $s = explode('_',$s);
                     ?>
                     <li>
-                        <img src="<?php echo $imgSrc;?>" alt="Image" class="img-fluid">
+                        <img src="<?php echo $imgSrc;?>" alt="Image web design<?php echo $title;?> " class="img-fluid">
                         <a class="preview jsPreviewWebIndex" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')"><span class="icon-search-plus"></span></a>
                         <h3><?php echo $title; ?></h3>
                         <p class="tags">
@@ -327,7 +329,7 @@
                         $title = explode('$',$files[$i])[0];
                     ?>
                     <li>
-                        <img src="<?php echo 'images/portfolio/graphic/'.$files[$i];?>" alt="Image" class="img-fluid">
+                        <img src="<?php echo 'images/portfolio/graphic/'.$files[$i];?>" alt="Image graphic design <?php echo $title;?>" class="img-fluid">
                         <a class="preview jsPreviewGraphicIndex" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'graphic')"><span class="icon-search-plus"></span></a>
                     </li>
                     <?php
@@ -408,7 +410,7 @@
       <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5">
-              <img src="images/hero_4.jpg" alt="Image" class="img-fluid" class="img-fluid">
+              <img src="images/hero_4.jpg" alt="Image aboutus montrealweb" class="img-fluid" class="img-fluid">
             </div>
           <div class="col-lg-5 ml-auto section-title">
             <span class="sub-title mb-2 d-block"><?php echo $texts['about_us'][$lang]; ?></span>
@@ -441,21 +443,21 @@
             </div>
             <div class="row">
               <div class="col-lg-4 mb-5 person">
-                <img src="images/person_1.jpg" alt="Image" class="img-fluid mb-2">
+                <img src="images/person_1.jpg" alt="Image farzad kamali" class="img-fluid mb-2">
                 <h3>FARZAD Kamali</h3>
                 <span class="mb-4 d-block"><?php echo $texts['programmer_developer'][$lang]; ?></span>
                 <p><?php echo $texts['farzad_text'][$lang]; ?></p>
               </div>
 
               <div class="col-lg-4 mb-5 person">
-                <img src="images/person_1.jpg" alt="Image" class="img-fluid mb-2">
+                <img src="images/person_1.jpg" alt="Image lili ashadi" class="img-fluid mb-2">
                 <h3>LILI Ashadi</h3>
                 <span class="mb-4 d-block"><?php echo $texts['sales_manager_accountant'][$lang]; ?></span>
                 <p><?php echo $texts['lili_text'][$lang]; ?></p>
               </div>
 
               <div class="col-lg-4 person">
-                <img src="images/celine.jpg" alt="Image" class="img-fluid mb-2">
+                <img src="images/celine.jpg" alt="Image celine and caroline" class="img-fluid mb-2">
                 <h3>Céline & Caroline</h3>
                 <span class="mb-4 d-block"><?php echo $texts['motivators'][$lang]; ?></span>
                 <p><?php echo $texts['motivators_text'][$lang]; ?></p>
@@ -594,7 +596,7 @@
               data.data[x].tags.indexOf("motrealweb")>-1 ||
               data.data[x].tags.indexOf("web")>-1
               ){
-              $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+'"></div>');
+              $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+' alt="instagram post image"></div>');
             }
           }
         },
@@ -740,13 +742,13 @@
     }
     
     // to prevent r-click
-    /*
+    
         $(function() {
             $(this).bind("contextmenu", function(e) {
                 e.preventDefault();
             });
         }); 
-*/
+
   </script>
 
 
@@ -761,7 +763,7 @@
       </div>
       <div class="modal-body">
           <object type="text/html" data=""></object>
-          <img class="photo">
+          <img class="photo" alt="preview image">
       </div>
     </div>
 

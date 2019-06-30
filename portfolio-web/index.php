@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
   
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../images/mw.ico" />
+    <link rel="apple-touch-icon" href="../images/mw.ico" />
     
   </head>
   
@@ -63,7 +65,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-6 col-md-4">
-                        <h1 class="my-0 site-logo"><a href="../">MontrealWEB</a></h1>
+                        <h1 class="my-0 site-logo"><a href="../"><img src="../images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
                     </div>
                     <div class="col-6 col-md-8">
                         <nav class="site-navigation text-right" role="navigation">
@@ -82,7 +84,7 @@
                                     <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                                     <li><a href="../#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                                     <li><a href="../#contact-section" class="nav-link">Contact</a></li>
-                                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
+                                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"><?php echo $texts['lang'][$lang]; ?></a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -114,7 +116,7 @@
                     $s = explode('_',$s);
                 ?>
                 <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 portfolio mb-2" data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>', 'web_template')">
-                    <img src=<?php echo $imgSrc; ?> alt="Image" class="img-fluid">
+                    <img src=<?php echo $imgSrc; ?> alt="Image web design" class="img-fluid">
                     <span class="icon-search-plus"></span>
                     <h3><?php echo $title; ?></h3>
                     <p class="tags">
@@ -221,7 +223,7 @@
       </div>
       <div class="modal-body">
           <object type="text/html" data=""></object>
-          <img class="photo">
+          <img class="photo" alt="preview image">
       </div>
     </div>
 

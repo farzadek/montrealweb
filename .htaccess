@@ -3,4 +3,4 @@ RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?montrealweb.ca [NC]
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?localhost [NC]
 RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
-RewriteRule \.(jpg|jpeg|png|gif)$ – [NC,F,L]
+RewriteRule \.(jpg|jpeg|png|gif|ico)$ – [NC,F,L]

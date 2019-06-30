@@ -33,7 +33,9 @@
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-  </head>
+    <link rel="shortcut icon" href="../images/mw.ico" />
+    <link rel="apple-touch-icon" href="../images/mw.ico" />
+    </head>
   
   <script>
     function changeLang(lang) {
@@ -69,7 +71,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-6 col-md-4">
-                        <h1 class="my-0 site-logo"><a href="../">MontrealWEB</a></h1>
+                        <h1 class="my-0 site-logo"><a href="../"><img src="../images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
                     </div>
                     <div class="col-6 col-md-8">
                         <nav class="site-navigation text-right" role="navigation">
@@ -88,7 +90,7 @@
                                     <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                                     <li><a href="../#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                                     <li><a href="../#contact-section" class="nav-link">Contact</a></li>
-                                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
+                                    <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"><?php echo $texts['lang'][$lang]; ?></a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -118,7 +120,7 @@
                 $title = explode("$",$files[$i])[0];
             ?>
               <elem data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')">
-                <img class="lazy" data-src="<?php echo $imgSrc; ?>" alt="image <?php echo $title; ?>" >
+                <img class="lazy" data-src="<?php echo $imgSrc; ?>" alt="image graphic<?php echo $title; ?>" >
                 <span class="icon-search-plus"></span>
               </elem>
             <?php
@@ -126,31 +128,7 @@
               }
             ?>
           </div>
-<!--
-                <div class="col-md-12">
-                  <div class="row">
-	                  <div class="gal">
-                    <?php
-                    $files = scandir('../images/portfolio/graphic');
-                    array_splice($files, 0, 2);
-                    $i = 0;
-                    while($i<sizeof($files)){
-                      $imgSrc = '../images/portfolio/graphic/'.$files[$i];
-                      $title = explode("$",$files[$i])[0];
-                    ?>
-                      <div data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')">
-                        <img class="lazy" data-src="<?php echo $imgSrc; ?>" alt="image <?php echo $title; ?>" >
-                        <span class="icon-search-plus"></span>
-                      </div>
-                    <?php
-                      $i++;
-                    }
-                    ?>
-	                  </div>	
-                  </div>
-                </div>
--->
-            </div>
+          </div>
 
         </div>
     </div> 
@@ -208,13 +186,13 @@
     }
 
     // to prevent r-click
-    /*
+    
         $(function() {
             $(this).bind("contextmenu", function(e) {
                 e.preventDefault();
             });
         }); 
-*/
+
   </script>
 
 
@@ -229,7 +207,7 @@
           </div>
           <div class="modal-body">
               <object type="text/html" data=""></object>
-              <img class="photo">
+              <img class="photo" alt="preview graphic design">
           </div>
         </div>
 
