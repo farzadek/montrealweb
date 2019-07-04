@@ -51,7 +51,7 @@
           $msg .= '<p style="font-size:14px">PHONE: <strong>'.$phone.'</strong></p><br/><p style="font-size:15px">'.$message.'</p></body></html>';
           $headers = "MIME-Version: 1.0\r\n";
           $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-          if(mail("farzadek@gmail.com","from MontrealWeb.ca",$msg, $headers)){
+          if(mail("info@montrealweb.ca","from MontrealWeb.ca",$msg, $headers)){
               $succ = true;
               $msg = '';
               if($email){
@@ -547,6 +547,7 @@
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                    <li><a href class="nav-link jsPrivacyPolicy" data-toggle="modal" onClick="showPrivacyModal(<?php echo $lang; ?>)" data-target="#privacyModal"><?php echo $texts['privacy_policy'][$lang]; ?></a></li>
                     <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link jsChangeLangFooter"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"> <?php echo $texts['lang'][$lang]; ?></a></li>
                 </ul>
         </div>
@@ -557,7 +558,7 @@
               <a href="https://www.linkedin.com/in/farzadkamali" target="_blank" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
             </div>
             
-            <p>Copyright &copy; 2016 - <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+            <p>Copyright &copy; 2015 - <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
           
           </div>
           
@@ -580,23 +581,16 @@
     <script>
     window.addEventListener("load", function(){
 
-      var token = '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc'/*,
-          num_photos = 4*/;
+      var token = '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc';
       $.ajax({
         url: 'https://api.instagram.com/v1/users/self/media/recent',
         dataType: 'jsonp',
         type: 'GET',
-        data: {access_token: token/*, count: num_photos*/},
-        success: function(data){
+        data: {access_token: token},
+        success: function(data){console.log(data);
           for( x in data.data ){
-            if(
-              data.data[x].tags.indexOf("uidesign")>-1 ||
-              data.data[x].tags.indexOf("graphicdesign")>-1 ||
-              data.data[x].tags.indexOf("photography")>-1 ||
-              data.data[x].tags.indexOf("motrealweb")>-1 ||
-              data.data[x].tags.indexOf("web")>-1
-              ){
-              $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+' alt="instagram post image"></div>');
+            if( data.data[x].tags.indexOf("montrealweb")>-1 ){
+              $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+'" alt="instagram post image"></div>');
             }
           }
         },
@@ -604,8 +598,8 @@
           console.log(data);
         }
       });
-
     });
+			
 
     $(document).ready(function() {
         var item = 3;
@@ -740,9 +734,17 @@
             $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
         }
     }
-    
+
+    function showPrivacyModal(lang){
+        var pageAd = "pages/privacy.html";
+        if(lang == '1'){
+          pageAd = "pages/privacy_fr.html";
+        }
+        $('#privacyModal').find('.modal-body').find('object').attr('data', pageAd);
+    }
+
     // to prevent r-click
-    
+
         $(function() {
             $(this).bind("contextmenu", function(e) {
                 e.preventDefault();
@@ -764,6 +766,23 @@
       <div class="modal-body">
           <object type="text/html" data=""></object>
           <img class="photo" alt="preview image">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="privacyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4><?php echo $texts['privacy_policy'][$lang]; ?></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <object type="text/html" data=""></object>
       </div>
     </div>
 

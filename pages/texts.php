@@ -42,4 +42,5 @@
     $texts['preview_the_project'] = ['Preview the project', 'Prévisualiser le projet'];
     $texts['insta_posts'] = ['Posts in Instagram', 'Articles sur Instagram'];
     $texts['social_network'] = ['Social networks', 'Réseaux sociaux'];
+    $texts['privacy_policy'] = ['Privacy Policy', 'Politique de Confidentialité'];
 ?>

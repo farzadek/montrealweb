@@ -1047,7 +1047,7 @@ h1, h2, h3, h4, h5, h6 {
       height: calc(90vh - 3.5rem);
       display: flex;
     }
-    #previewModal .modal-body object {
+    #previewModal .modal-body object, #privacyModal .modal-body object {
       width: 100%;
       min-height: 78vh;
       margin: 0 auto;
