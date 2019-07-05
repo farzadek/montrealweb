@@ -128,6 +128,7 @@
               }
             ?>
           </div>
+          <a href="../" class="btn btn-link"><?php echo $texts['back_to_homepage'][$lang]; ?></a>
           </div>
 
         </div>
@@ -142,6 +143,7 @@
             <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
             <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
             <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
+            <li><a href class="nav-link jsPrivacyPolicy" data-toggle="modal" onClick="showPrivacyModal(<?php echo $lang; ?>)" data-target="#privacyModal"><?php echo $texts['privacy_policy'][$lang]; ?></a></li>
             <li><a href="#contact-section" class="nav-link">Contact</a></li>
           </ul>
         </div>
@@ -185,6 +187,14 @@
         $('#previewModal').find('.modal-body').find('.photo').attr('src', pageAd);
     }
 
+    function showPrivacyModal(lang){
+        var pageAd = "../pages/privacy.html";
+        if(lang == '1'){
+          pageAd = "../pages/privacy_fr.html";
+        }
+        $('#privacyModal').find('.modal-body').find('object').attr('data', pageAd);
+    }    
+
     // to prevent r-click
     
         $(function() {
@@ -214,6 +224,22 @@
       </div>
     </div>
 
+    <div id="privacyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4><?php echo $texts['privacy_policy'][$lang]; ?></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <object type="text/html" data=""></object>
+      </div>
+    </div>
+
+  </div>
+</div>
 
   </body>
 </html>

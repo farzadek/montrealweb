@@ -43,4 +43,5 @@
     $texts['insta_posts'] = ['Posts in Instagram', 'Articles sur Instagram'];
     $texts['social_network'] = ['Social networks', 'Réseaux sociaux'];
     $texts['privacy_policy'] = ['Privacy Policy', 'Politique de Confidentialité'];
+    $texts['back_to_homepage'] = ['Back to Home page', 'Retour à la page d\'accueil'];
 ?>

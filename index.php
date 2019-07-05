@@ -108,8 +108,8 @@
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.3.1.min.js"></script>
-    <link rel="shortcut icon" href="images/mw.ico" />
-    <link rel="apple-touch-icon" href="images/mw.ico" />
+    <link rel="shortcut icon" href="images/logo.ico" />
+    <link rel="apple-touch-icon" href="images/logo.ico" />
   </head>
 
   <script>
