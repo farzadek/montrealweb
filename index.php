@@ -443,22 +443,22 @@
             </div>
             <div class="row">
               <div class="col-lg-4 mb-5 person">
-                <img src="images/person_1.jpg" alt="Image farzad kamali" class="img-fluid mb-2">
+                <img src="images/far.jpg" alt="Image farzad kamali" class="img-fluid mb-2">
                 <h3>FARZAD Kamali</h3>
                 <span class="mb-4 d-block"><?php echo $texts['programmer_developer'][$lang]; ?></span>
                 <p><?php echo $texts['farzad_text'][$lang]; ?></p>
               </div>
 
               <div class="col-lg-4 mb-5 person">
-                <img src="images/person_1.jpg" alt="Image lili ashadi" class="img-fluid mb-2">
+                <img src="images/lili.jpg" alt="Image lili ashadi" class="img-fluid mb-2">
                 <h3>LILI Ashadi</h3>
                 <span class="mb-4 d-block"><?php echo $texts['sales_manager_accountant'][$lang]; ?></span>
                 <p><?php echo $texts['lili_text'][$lang]; ?></p>
               </div>
 
               <div class="col-lg-4 person">
-                <img src="images/celine.jpg" alt="Image celine and caroline" class="img-fluid mb-2">
-                <h3>Céline & Caroline</h3>
+                <img src="images/celine.jpg" alt="Image cÉLINE and CAROLINE" class="img-fluid mb-2">
+                <h3>CÉLINE & CAROLINE</h3>
                 <span class="mb-4 d-block"><?php echo $texts['motivators'][$lang]; ?></span>
                 <p><?php echo $texts['motivators_text'][$lang]; ?></p>
               </div>

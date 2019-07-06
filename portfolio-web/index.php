@@ -25,16 +25,8 @@
     <meta name="og:title" property="og:title" content="MontrealWeb - A web agency to make beautiful websites - portfolio">
     <meta name="robots" content="index, follow">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    
-    
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-  
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="shortcut icon" href="../images/mw.ico" />
-    <link rel="apple-touch-icon" href="../images/mw.ico" />
+    <link rel="shortcut icon" href="../images/logo.ico" />
+    <link rel="apple-touch-icon" href="../images/logo.ico" />
     
   </head>
   
@@ -168,6 +160,15 @@
       </div>
     </footer>
   </div>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    
+    
+    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+  
+    <link rel="stylesheet" href="../css/style.css">
 
   <script src="../js/jquery-3.3.1.min.js"></script>
   <script src="../js/popper.min.js"></script>
