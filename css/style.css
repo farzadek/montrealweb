@@ -229,7 +229,8 @@ h1, h2, h3, h4, h5, h6 {
 .site-navbar {
   margin-bottom: 0px;
   width: 100%;
-  padding: 15px 0; }
+  padding: 15px 0; 
+}
   .site-navbar .site-logo {
     font-weight: 200;
     line-height: 0;
@@ -1264,7 +1265,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 /* --------------------------------------------------------------------------------------------  */
   @media (max-width: 550px) {
-    .site-blocks-cover h1 {
+    .site-navbar .site-logo a{
+      font-size: 1.5rem;
+    }
+   .site-blocks-cover h1 {
       font-size: 3rem;
     }
 
@@ -1282,7 +1286,11 @@ h1, h2, h3, h4, h5, h6 {
     .hero-slider .owl-nav .owl-next {
       float: right;
     }
-
+    #what-we-do-section>div>div:nth-child(2)>div>div>div:nth-child(6),
+    #what-we-do-section>div>div:nth-child(2)>div>div>div:nth-child(2),
+    #what-we-do-section>div>div:nth-child(2)>div>div>div:nth-child(3) {
+      display: none;
+    }
     .site-blocks-cover .sub-text {
       font-size: 1rem;
       line-height: 1.1;

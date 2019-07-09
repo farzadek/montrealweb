@@ -142,10 +142,10 @@
       <div class="site-navbar site-navbar-target js-sticky-header">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-6 col-md-4">
+            <div class="col-8 col-md-6">
               <h1 class="my-0 site-logo"><a href="<?php echo $_SERVER['PHP_SELF']?>"><img src="images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
             </div>
-            <div class="col-6 col-md-8">
+            <div class="col-4 col-md-6">
               <nav class="site-navigation text-right" role="navigation">
                 <div class="container">
 
@@ -193,7 +193,7 @@
               </div>
               <div class="text">
                 <p class="sub-text mb-5"><?php echo $texts['slogan'][$lang]; ?></p>
-                <p><a href="#contact-section" class="btn btn-primary btn-xs"><?php echo $texts['tell_us_what_you_need'][$lang]; ?>!</a></p>
+                <p><a href="#contact_form" class="btn btn-primary btn-xs"><?php echo $texts['tell_us_what_you_need'][$lang]; ?>!</a></p>
               </div>
             </div>
           </div>
@@ -633,7 +633,7 @@
                   }
               } 
               else {
-                $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. Please try later!</p>");
+                $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. You can send your message to info@montrealweb.ca directly.</p>");
               }
 
             },
