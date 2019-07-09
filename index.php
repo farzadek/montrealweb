@@ -286,7 +286,7 @@
                     <?php
                     $files = scandir('images/portfolio/web');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<6;$i++){
+                    for($i=0;$i<5;$i++){
                         $imgSrc = 'images/portfolio/web/'.$files[$i];
                         $title = explode("$",$files[$i])[0];
                         $s = explode('$',$files[$i])[1];
@@ -324,7 +324,7 @@
                     <?php
                     $files = scandir('images/portfolio/graphic');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<8;$i++){
+                    for($i=0;$i<5;$i++){
                         $imgSrc = 'images/portfolio/graphic/'.$files[$i];
                         $title = explode('$',$files[$i])[0];
                     ?>
@@ -499,28 +499,32 @@
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'#contact_form'; ?>" class="contact-form" id="contact_form" novalidate>
           <div class="row mb-4">
             <div class="col-12">
-              <input type="text" name="name" id="contact_name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>" placeholder="<?php echo $texts['name'][$lang]; ?>">
+              <label><?php echo $texts['name'][$lang]; ?></label>
+              <input type="text" name="name" id="contact_name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>">
             </div>
             <div class="name_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
-              <input type="phone" value="<?php echo $phone; ?>" name="phone" class="form-control <?php echo $error['phone']?'err':''; ?>" placeholder="<?php echo $texts['phone'][$lang]; ?>">
+              <label><?php echo $texts['phone'][$lang]; ?></label>
+              <input type="phone" value="<?php echo $phone; ?>" name="phone" class="form-control <?php echo $error['phone']?'err':''; ?>">
             </div>
             <div class="phone_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
-              <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo $error['email']?'err':''; ?>" placeholder="Email">
+              <label>Email</label>
+              <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo $error['email']?'err':''; ?>">
             </div>
             <div class="email_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
-              <textarea class="form-control <?php echo $error['message']?'err':''; ?>"  name="message" id="" cols="30" rows="10" placeholder="Message"><?php echo $message; ?></textarea>
+              <label>Message</label>
+              <textarea class="form-control <?php echo $error['message']?'err':''; ?>"  name="message" id="" cols="30" rows="10"><?php echo $message; ?></textarea>
             </div>
             <div class="message_err"></div>
           </div>
