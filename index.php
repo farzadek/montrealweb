@@ -16,7 +16,7 @@
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
-
+/*
   if (isset($_POST['submitted'])){
       $submitted = true;
       $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
@@ -68,7 +68,7 @@
       }
 
   }
-
+*/
 ?>
 
 <!DOCTYPE html>
@@ -499,30 +499,30 @@
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'#contact_form'; ?>" class="contact-form" id="contact_form" novalidate>
           <div class="row mb-4">
             <div class="col-12">
-              <input type="text" name="name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>" placeholder="<?php echo $texts['name'][$lang]; ?>">
+              <input type="text" name="name" id="contact_name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>" placeholder="<?php echo $texts['name'][$lang]; ?>">
             </div>
-            <?php echo $error['name']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['name'].'</p>':'';?>
+            <div class="name_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <input type="phone" value="<?php echo $phone; ?>" name="phone" class="form-control <?php echo $error['phone']?'err':''; ?>" placeholder="<?php echo $texts['phone'][$lang]; ?>">
             </div>
-            <?php echo $error['phone']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['phone'].'</p>':'';?>
+            <div class="phone_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo $error['email']?'err':''; ?>" placeholder="Email">
             </div>
-            <?php echo $error['email']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['email'].'</p>':'';?>
+            <div class="email_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
               <textarea class="form-control <?php echo $error['message']?'err':''; ?>"  name="message" id="" cols="30" rows="10" placeholder="Message"><?php echo $message; ?></textarea>
             </div>
-            <?php echo $error['message']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['message'].'</p>':'';?>
+            <div class="message_err"></div>
           </div>
 
           <div class="row">
@@ -530,8 +530,7 @@
               <button type="submit" class="btn btn-primary btn-sm jsContactSubmit" name="submitted">Send Message</button>
             </div>
           </div>
-          <?php echo ($submitted && $succ)?'<p class="succ"><span class="icon-check-circle-o"></span> Your message received! We will contact you as soon as possible</p>':'';?>
-          <?php echo ($submitted && $error['mail'])?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['mail'].'</p>':'';?>
+          <div class="sendEmailResult"></div>
         </form>
       </div>
     </div> <!-- END .site-section -->
@@ -587,7 +586,7 @@
         dataType: 'jsonp',
         type: 'GET',
         data: {access_token: token},
-        success: function(data){console.log(data);
+        success: function(data){
           for( x in data.data ){
             if( data.data[x].tags.indexOf("montrealweb")>-1 ){
               $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+'" alt="instagram post image"></div>');
@@ -598,6 +597,52 @@
           console.log(data);
         }
       });
+
+      $("#contact_form").submit(function( event ) {
+
+        $(".name_err").empty();
+        $(".phone_err").empty();
+        $(".email_err").empty();
+        $(".message_err").empty();
+        $(".sendEmailResult").empty();
+
+        event.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: 'sendemail.php',
+          data: $(this).serialize(),
+            success: function(response){
+              if(response.indexOf('<') == -1){
+                  var result = JSON.parse(response).error; 
+
+                  if(result.name != ""){
+                    $(".name_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.name+"</p>");
+                  }
+                  if(result.phone){
+                    $(".phone_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.phone+"</p>");
+                  }
+                  if(result.email){
+                    $(".email_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.email+"</p>");
+                  }
+                  if(result.message){
+                    $(".message_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.message+"</p>");
+                  }
+                  if(!result.message && !result.name && !result.phone && !result.email){
+                    $(".sendEmailResult").html("<p class='succ'><span class='icon-check-circle-o'></span> Your message received! We will contact you as soon as possible</p>");
+                  }
+              } 
+              else {
+                $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. Please try later!</p>");
+              }
+
+            },
+            error: function(error) {
+                $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. Please try later!</p>");
+            }
+        });
+      });
+
+
     });
 			
 
@@ -745,11 +790,11 @@
 
     // to prevent r-click
 
-        $(function() {
-            $(this).bind("contextmenu", function(e) {
-                e.preventDefault();
-            });
-        }); 
+    $(function() {/*
+      $(this).bind("contextmenu", function(e) {
+        e.preventDefault();
+      });*/
+    }); 
 
   </script>
 
