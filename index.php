@@ -524,6 +524,7 @@
             </div>
             <div class="message_err"></div>
           </div>
+          <input type="hidden" name="lang" value="<?php echo $lang; ?>">
 
           <div class="row">
             <div class="col-12">

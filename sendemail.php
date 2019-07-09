@@ -3,6 +3,7 @@ $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
 $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING);
 $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
 $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
+$lang = filter_var(trim($_POST['lang']), FILTER_SANITIZE_STRING);
 $findError = false;
 $error['name'] = '';
 $error['email'] = '';
@@ -11,25 +12,40 @@ $error['message'] = '';
 $error['send'] = '';
 
 if(!$name){
-    $error['name'] = "Don't you want to tell us your name?";
+    $error['name'] = "Tu ne veux pas nous dire ton nom?";
+    if($lang == "0"){
+        $error['name'] = "Don't you want to tell us your name?";
+    }
     $findError = true;
 }
 if(!$phone && !$email){
-    $error['email'] = "We need your phone number or email address to contact you!";
+    $error['email'] = "Nous avons besoin de votre numéro de téléphone ou de votre adresse électronique pour vous contacter.!";
+    if($lang == "0"){
+        $error['email'] = "We need your phone number or email address to contact you!";
+    }
     $findError = true;
 } 
 else {
     if($phone && !preg_match("/^\(?([2-9][0-8][0-9])\)?[-. ]?([2-9][0-9]{2})[-. ]?([0-9]{4})$/", $phone)){
-        $error['phone'] = "It seems that Phone no. is not correct!";
+        $error['phone'] = "Il semble que le numéro de téléphone n'est pas correcte!";
+        if($lang == "0"){
+            $error['phone'] = "It seems that Phone no. is not correct!";
+        }
         $findError = true;
     }
     if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error['email'] = "It seems that Email format is not correct!";
+        $error['email'] = "Il semble que le format d'email n'est pas correct!";
+        if($lang == "0"){
+            $error['email'] = "It seems that Email format is not correct!";
+        }
         $findError = true;
     }
 }
 if(!$message){
-    $error['message'] = "Would you like to tell us how can we help?";
+    $error['message'] = "Veux-tu me dire ce que je peux faire pour toi?";
+    if($lang == "0"){
+        $error['message'] = "Would you like to tell me what can I do for you?";
+    }
     $findError = true;
 }
 
