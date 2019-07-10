@@ -16,59 +16,6 @@
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
-/*
-  if (isset($_POST['submitted'])){
-      $submitted = true;
-      $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
-      $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING);
-      $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
-      $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
-      if(!$name){
-          $error['name'] = "Don't you want to tell us your name?";
-          $findError = true;
-      }
-      if(!$phone && !$email){
-          $error['email'] = "We need your phone number or email address to contact you!";
-          $findError = true;
-      } else {
-          if($phone && !preg_match("/^\(?([2-9][0-8][0-9])\)?[-. ]?([2-9][0-9]{2})[-. ]?([0-9]{4})$/", $phone)){
-              $error['phone'] = "It seems that Phone no. is not correct!";
-              $findError = true;
-          }
-          if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-              $error['email'] = "It seems that Email format is not correct!";
-              $findError = true;
-          }
-      }
-      if(!$message){
-          $error['message'] = "Would you like to tell us how can we help?";
-          $findError = true;
-      }
-
-      $msg = '';
-      if(!$findError){
-          $msg = '<body><html><p style="font-size:14px">NAME: <strong>'.$name.'</strong></p><br/><p style="font-size:14px">EMAIL: <strong>'.$email.'</strong></p><br/>';
-          $msg .= '<p style="font-size:14px">PHONE: <strong>'.$phone.'</strong></p><br/><p style="font-size:15px">'.$message.'</p></body></html>';
-          $headers = "MIME-Version: 1.0\r\n";
-          $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-          if(mail("info@montrealweb.ca","from MontrealWeb.ca",$msg, $headers)){
-              $succ = true;
-              $msg = '';
-              if($email){
-                  if($name){$msg .= '<p>Dear <strong>'.$name.'</strong></p>';}
-                  $msg .= '<p>We received your message and we\'ll contact you as soon as possible.</p>';
-                  $msg .= '<p>Have a nice day.</p>';
-                  $msg .= '<p>Lili Ashadi - MontrealWEB.ca</p>';
-                  mail($email,"Message from MontrealWeb.ca",$msg, $headers);
-              }
-          } else { 
-              $succ = false; 
-              $error['mail'] = 'Sorry! The system couldn\'t deliver your message. Please try later!';
-          }
-      }
-
-  }
-*/
 ?>
 
 <!DOCTYPE html>
@@ -173,15 +120,9 @@
     <div class="site-blocks-cover" id="home-section">
       <div class="img-wrap">
         <div class="owl-carousel slide-one-item hero-slider">
-          <div class="slide overlay">
-            <img src="images/hero_1.jpg" alt="Image" class="img-fluid">  
-          </div>
-          <div class="slide overlay">
-            <img src="images/hero_2.jpg" alt="Image" class="img-fluid">  
-          </div>
-          <div class="slide overlay">
-            <img src="images/hero_3.jpg" alt="Image" class="img-fluid">  
-          </div>
+          <div class="slide overlay jsBk1"></div>
+          <div class="slide overlay jsBk2"></div>
+          <div class="slide overlay jsBk3"></div>
         </div>
       </div>
       <div class="container">
@@ -532,7 +473,7 @@
 
           <div class="row">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-sm jsContactSubmit" name="submitted">Send Message</button>
+              <button type="submit" class="btn btn-primary jsContactSubmit" name="submitted">Send Message</button>
             </div>
           </div>
           <div class="sendEmailResult"></div>
@@ -585,6 +526,23 @@
     <script>
     window.addEventListener("load", function(){
 
+      var width = $(window).width();
+      var img = ['hero1768.jpg', 'hero2768.jpg', 'hero3768.jpg'];
+      if(width > 1366){
+        img = ['hero_1.jpg', 'hero_2.jpg', 'hero_3.jpg'];
+      } else{
+        if(width <= 1366 && width > 1024){
+          img = ['hero11400.jpg', 'hero21400.jpg', 'hero31400.jpg'];
+        } else{
+            if(width <= 1024 && width > 768){
+              img = ['hero11024.jpg', 'hero21024.jpg', 'hero31024.jpg'];
+            } 
+        }
+      }
+      $('.owl-carousel').find('.jsBk1').append('<img src="images/'+img[0]+'" alt="Image" class="img-fluid">');
+      $('.owl-carousel').find('.jsBk2').append('<img src="images/'+img[1]+'" alt="Image" class="img-fluid">');
+      $('.owl-carousel').find('.jsBk3').append('<img src="images/'+img[2]+'" alt="Image" class="img-fluid">');
+
       var token = '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc';
       $.ajax({
         url: 'https://api.instagram.com/v1/users/self/media/recent',
@@ -614,30 +572,39 @@
         event.preventDefault();
         $.ajax({
           type: "POST",
-          url: 'sendemail.php',
+          url: 'http://farzadkamali.000webhostapp.com/sendemail.php',
           data: $(this).serialize(),
             success: function(response){
-              if(response.indexOf('<') == -1){
-                  var result = JSON.parse(response).error; 
+              if(response){
+                if(response.indexOf('<') == -1){
+                    var result = JSON.parse(response).error; 
 
-                  if(result.name != ""){
-                    $(".name_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.name+"</p>");
-                  }
-                  if(result.phone){
-                    $(".phone_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.phone+"</p>");
-                  }
-                  if(result.email){
-                    $(".email_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.email+"</p>");
-                  }
-                  if(result.message){
-                    $(".message_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.message+"</p>");
-                  }
-                  if(!result.message && !result.name && !result.phone && !result.email){
-                    $(".sendEmailResult").html("<p class='succ'><span class='icon-check-circle-o'></span> Your message received! We will contact you as soon as possible</p>");
-                  }
-              } 
-              else {
-                $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. You can send your message to info@montrealweb.ca directly.</p>");
+                    if(result.name != ""){
+                      $(".name_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.name+"</p>");
+                    }
+                    if(result.phone){
+                      $(".phone_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.phone+"</p>");
+                    }
+                    if(result.email){
+                      $(".email_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.email+"</p>");
+                    }
+                    if(result.message){
+                      $(".message_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.message+"</p>");
+                    }
+                    if(!result.message && !result.name && !result.phone && !result.email){
+                      $(".sendEmailResult").html("<p class='succ'><span class='icon-check-circle-o'></span> Your message received! We will contact you as soon as possible</p>");
+                    }
+                } 
+                else {
+                  $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. You can send your message to info@montrealweb.ca directly.</p>");
+                }
+              }
+              else{
+                $(".sendEmailResult").html("<p class='succ'><span class='icon-check-circle-o'></span> Your message received! We will contact you as soon as possible</p>");
+                setTimeout(function() {
+                    $(".sendEmailResult .succ").hide(500).empty();
+                    $('#contact_form').trigger("reset");
+                }, 4000);
               }
 
             },

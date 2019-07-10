@@ -1,8 +1,10 @@
 <?php
+ header("Access-Control-Allow-Origin: *");
 $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
 $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING);
 $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
-$message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
+$message = nl2br(strip_tags($_POST['message']));
+
 $lang = filter_var(trim($_POST['lang']), FILTER_SANITIZE_STRING);
 $findError = false;
 $error['name'] = '';
@@ -41,7 +43,7 @@ else {
         $findError = true;
     }
 }
-if(!$message){
+if(strlen($message)<3){
     $error['message'] = "Veux-tu me dire ce que je peux faire pour toi?";
     if($lang == "0"){
         $error['message'] = "Would you like to tell me what can I do for you?";
@@ -58,7 +60,7 @@ else {
     $headers = "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
     
-    if(mail("info@montrealweb.ca","from MontrealWeb.ca",$msg, $headers)){
+    if(mail("farzadek@gmail.com","visitor from MontrealWeb.ca",$msg, $headers)){
         $succ = true;
         $msg = '';
         if($email){

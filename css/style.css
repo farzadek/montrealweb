@@ -807,7 +807,13 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 10px 50px -10px rgba(0, 0, 0, 0.1);
   margin-bottom: -15em; }
-
+.contact-form .sendEmailResult .succ{
+  margin: -12em 0 0 0;
+  position: absolute;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-53%);
+}
 .jm-sticky-top {
   position: -webkit-sticky;
   position: sticky;
