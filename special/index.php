@@ -5,6 +5,8 @@
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
+
+  $files = scandir('.');
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,8 @@
 
     <link rel="shortcut icon" href="../images/logo.ico" />
     <link rel="apple-touch-icon" href="../images/logo.ico" />
-    
+
+    <script src="../js/jquery-3.3.1.min.js"></script>    
   </head>
   
   <script>
@@ -65,10 +68,10 @@
         <div class="site-navbar site-navbar-target js-sticky-header">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-6 col-md-4">
+                    <div class="col-8 col-md-6">
                         <h1 class="my-0 site-logo"><a href="../"><img src="../images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
                     </div>
-                    <div class="col-6 col-md-8">
+                    <div class="col-4 col-md-6">
                         <nav class="site-navigation text-right" role="navigation">
                             <div class="container">
 
@@ -99,35 +102,14 @@
     <div class="site-section bg-light" id="portfolio_page">
         <div class="acontainer">
             <div class="gal">
-	
-                <img src="01.jpg" alt="">
-                <img src="02.jpg" alt="">
-                <img src="03.jpg" alt="">
-                <img src="04.jpg" alt="">
-                <img src="05.jpg" alt="">
-                <img src="06.jpg" alt="">
-                <img src="07.jpg" alt="">
-                <img src="08.jpg" alt="">
-                <img src="09.jpg" alt="">
-                <img src="10.jpg" alt="">
-                <img src="11.jpg" alt="">
-                <img src="12.jpg" alt="">
-                <img src="13.jpg" alt="">
-                <img src="14.jpg" alt="">
-                <img src="15.jpg" alt="">
-                <img src="16.jpg" alt="">
-                <img src="17.jpg" alt="">
-                <img src="18.jpg" alt="">
-                <img src="19.jpg" alt="">
-                <img src="20.jpg" alt="">
-                <img src="21.jpg" alt="">
-                <img src="22.jpg" alt="">
-                <img src="23.png" alt="">
-                <img src="24.jpg" alt="">		
-
+  
+            <?php
+                for($i=2; $i < sizeof($files); $i++){
+                  echo '<img src="'.$files[$i].'" alt="">';
+                }
+            ?>
 	          </div>
-
-
+            <p>info@montrealweb.ca<br/>(438) 300 0456</p>
         </div>
     </div> 
 
@@ -171,7 +153,6 @@
   
     <link rel="stylesheet" href="../css/style.css">
 
-    <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
@@ -199,12 +180,10 @@
           }); 
     </script>
     <style>
-    body{
-      padding-right: 10px;
-      padding-left: 10px;
-    }
     .site-section{
-      padding-top: .5em;
+      padding: 0 .25em .25em;
+      text-align: center;
+      font-size: 1.5em;
     }
     </style>
   </body>
