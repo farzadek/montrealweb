@@ -99,14 +99,6 @@
     <meta name="og:title" property="og:title" content="A reasonable price for a perfect website. We are specialist in making beautiful websites and professional graphic design.">
     <meta name="robots" content="index, follow">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/lightslider.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.3.1.min.js"></script>
     <link rel="shortcut icon" href="images/logo.ico" />
     <link rel="apple-touch-icon" href="images/logo.ico" />
@@ -567,6 +559,15 @@
     </footer>
   </div>
 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/lightslider.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/owl.carousel.min.js"></script>
