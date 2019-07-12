@@ -16,59 +16,6 @@
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
-
-  if (isset($_POST['submitted'])){
-      $submitted = true;
-      $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
-      $phone = filter_var(trim($_POST['phone']), FILTER_SANITIZE_STRING);
-      $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
-      $message = filter_var(trim($_POST['message']), FILTER_SANITIZE_STRING);
-      if(!$name){
-          $error['name'] = "Don't you want to tell us your name?";
-          $findError = true;
-      }
-      if(!$phone && !$email){
-          $error['email'] = "We need your phone number or email address to contact you!";
-          $findError = true;
-      } else {
-          if($phone && !preg_match("/^\(?([2-9][0-8][0-9])\)?[-. ]?([2-9][0-9]{2})[-. ]?([0-9]{4})$/", $phone)){
-              $error['phone'] = "It seems that Phone no. is not correct!";
-              $findError = true;
-          }
-          if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-              $error['email'] = "It seems that Email format is not correct!";
-              $findError = true;
-          }
-      }
-      if(!$message){
-          $error['message'] = "Would you like to tell us how can we help?";
-          $findError = true;
-      }
-
-      $msg = '';
-      if(!$findError){
-          $msg = '<body><html><p style="font-size:14px">NAME: <strong>'.$name.'</strong></p><br/><p style="font-size:14px">EMAIL: <strong>'.$email.'</strong></p><br/>';
-          $msg .= '<p style="font-size:14px">PHONE: <strong>'.$phone.'</strong></p><br/><p style="font-size:15px">'.$message.'</p></body></html>';
-          $headers = "MIME-Version: 1.0\r\n";
-          $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-          if(mail("info@montrealweb.ca","from MontrealWeb.ca",$msg, $headers)){
-              $succ = true;
-              $msg = '';
-              if($email){
-                  if($name){$msg .= '<p>Dear <strong>'.$name.'</strong></p>';}
-                  $msg .= '<p>We received your message and we\'ll contact you as soon as possible.</p>';
-                  $msg .= '<p>Have a nice day.</p>';
-                  $msg .= '<p>Lili Ashadi - MontrealWEB.ca</p>';
-                  mail($email,"Message from MontrealWeb.ca",$msg, $headers);
-              }
-          } else { 
-              $succ = false; 
-              $error['mail'] = 'Sorry! The system couldn\'t deliver your message. Please try later!';
-          }
-      }
-
-  }
-
 ?>
 
 <!DOCTYPE html>
@@ -134,10 +81,10 @@
       <div class="site-navbar site-navbar-target js-sticky-header">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-6 col-md-4">
+            <div class="col-8 col-md-6">
               <h1 class="my-0 site-logo"><a href="<?php echo $_SERVER['PHP_SELF']?>"><img src="images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
             </div>
-            <div class="col-6 col-md-8">
+            <div class="col-4 col-md-6">
               <nav class="site-navigation text-right" role="navigation">
                 <div class="container">
 
@@ -165,15 +112,9 @@
     <div class="site-blocks-cover" id="home-section">
       <div class="img-wrap">
         <div class="owl-carousel slide-one-item hero-slider">
-          <div class="slide overlay">
-            <img src="images/hero_1.jpg" alt="Image" class="img-fluid">  
-          </div>
-          <div class="slide overlay">
-            <img src="images/hero_2.jpg" alt="Image" class="img-fluid">  
-          </div>
-          <div class="slide overlay">
-            <img src="images/hero_3.jpg" alt="Image" class="img-fluid">  
-          </div>
+          <div class="slide overlay jsBk1"></div>
+          <div class="slide overlay jsBk2"></div>
+          <div class="slide overlay jsBk3"></div>
         </div>
       </div>
       <div class="container">
@@ -185,7 +126,7 @@
               </div>
               <div class="text">
                 <p class="sub-text mb-5"><?php echo $texts['slogan'][$lang]; ?></p>
-                <p><a href="#contact-section" class="btn btn-primary btn-xs"><?php echo $texts['tell_us_what_you_need'][$lang]; ?>!</a></p>
+                <p><a href="#contact_form" class="btn btn-primary btn-xs"><?php echo $texts['tell_us_what_you_need'][$lang]; ?>!</a></p>
               </div>
             </div>
           </div>
@@ -278,7 +219,7 @@
                     <?php
                     $files = scandir('images/portfolio/web');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<6;$i++){
+                    for($i=0;$i<5;$i++){
                         $imgSrc = 'images/portfolio/web/'.$files[$i];
                         $title = explode("$",$files[$i])[0];
                         $s = explode('$',$files[$i])[1];
@@ -316,7 +257,7 @@
                     <?php
                     $files = scandir('images/portfolio/graphic');
                     array_splice($files, 0, 2);
-                    for($i=0;$i<8;$i++){
+                    for($i=0;$i<5;$i++){
                         $imgSrc = 'images/portfolio/graphic/'.$files[$i];
                         $title = explode('$',$files[$i])[0];
                     ?>
@@ -491,39 +432,43 @@
         <form method="post" action="<?php echo $_SERVER['PHP_SELF'].'#contact_form'; ?>" class="contact-form" id="contact_form" novalidate>
           <div class="row mb-4">
             <div class="col-12">
-              <input type="text" name="name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>" placeholder="<?php echo $texts['name'][$lang]; ?>">
+              <label><?php echo $texts['name'][$lang]; ?></label>
+              <input type="text" name="name" id="contact_name" class="form-control <?php echo $error['name']?'err':''; ?>" value="<?php echo $name; ?>">
             </div>
-            <?php echo $error['name']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['name'].'</p>':'';?>
+            <div class="name_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
-              <input type="phone" value="<?php echo $phone; ?>" name="phone" class="form-control <?php echo $error['phone']?'err':''; ?>" placeholder="<?php echo $texts['phone'][$lang]; ?>">
+              <label><?php echo $texts['phone'][$lang]; ?></label>
+              <input type="phone" value="<?php echo $phone; ?>" name="phone" class="form-control <?php echo $error['phone']?'err':''; ?>">
             </div>
-            <?php echo $error['phone']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['phone'].'</p>':'';?>
+            <div class="phone_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
-              <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo $error['email']?'err':''; ?>" placeholder="Email">
+              <label>Email</label>
+              <input type="email" name="email" value="<?php echo $email; ?>" class="form-control <?php echo $error['email']?'err':''; ?>">
             </div>
-            <?php echo $error['email']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['email'].'</p>':'';?>
+            <div class="email_err"></div>
           </div>
 
           <div class="row mb-4">
             <div class="col-12">
-              <textarea class="form-control <?php echo $error['message']?'err':''; ?>"  name="message" id="" cols="30" rows="10" placeholder="Message"><?php echo $message; ?></textarea>
+              <label>Message</label>
+              <textarea class="form-control <?php echo $error['message']?'err':''; ?>"  name="message" id="" cols="30" rows="10"><?php echo $message; ?></textarea>
             </div>
-            <?php echo $error['message']?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['message'].'</p>':'';?>
+            <div class="message_err"></div>
           </div>
+          <input type="hidden" name="lang" value="<?php echo $lang; ?>">
 
           <div class="row">
             <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-sm jsContactSubmit" name="submitted">Send Message</button>
+              <button type="submit" class="btn btn-primary jsContactSubmit" name="submitted">Send Message</button>
             </div>
           </div>
-          <?php echo ($submitted && $succ)?'<p class="succ"><span class="icon-check-circle-o"></span> Your message received! We will contact you as soon as possible</p>':'';?>
-          <?php echo ($submitted && $error['mail'])?'<p class="err"><span class="icon-times-circle-o"></span>'.$error['mail'].'</p>':'';?>
+          <div class="sendEmailResult"></div>
         </form>
       </div>
     </div> <!-- END .site-section -->
@@ -582,13 +527,30 @@
     <script>
     window.addEventListener("load", function(){
 
+      var width = $(window).width();
+      var img = ['hero1768.jpg', 'hero2768.jpg', 'hero3768.jpg'];
+      if(width > 1366){
+        img = ['hero_1.jpg', 'hero_2.jpg', 'hero_3.jpg'];
+      } else{
+        if(width <= 1366 && width > 1024){
+          img = ['hero11400.jpg', 'hero21400.jpg', 'hero31400.jpg'];
+        } else{
+            if(width <= 1024 && width > 768){
+              img = ['hero11024.jpg', 'hero21024.jpg', 'hero31024.jpg'];
+            } 
+        }
+      }
+      $('.owl-carousel').find('.jsBk1').append('<img src="images/'+img[0]+'" alt="Image" class="img-fluid">');
+      $('.owl-carousel').find('.jsBk2').append('<img src="images/'+img[1]+'" alt="Image" class="img-fluid">');
+      $('.owl-carousel').find('.jsBk3').append('<img src="images/'+img[2]+'" alt="Image" class="img-fluid">');
+
       var token = '3648306560.1c1827a.4a2783080b7646dcac204724ad4a63fc';
       $.ajax({
         url: 'https://api.instagram.com/v1/users/self/media/recent',
         dataType: 'jsonp',
         type: 'GET',
         data: {access_token: token},
-        success: function(data){console.log(data);
+        success: function(data){
           for( x in data.data ){
             if( data.data[x].tags.indexOf("montrealweb")>-1 ){
               $('#instafeed').append('<div><img src="'+data.data[x].images.low_resolution.url+'" alt="instagram post image"></div>');
@@ -599,6 +561,61 @@
           console.log(data);
         }
       });
+
+      $("#contact_form").submit(function( event ) {
+
+        $(".name_err").empty();
+        $(".phone_err").empty();
+        $(".email_err").empty();
+        $(".message_err").empty();
+        $(".sendEmailResult").empty();
+
+        event.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: 'http://farzadkamali.000webhostapp.com/sendemail.php',
+          data: $(this).serialize(),
+            success: function(response){
+              if(response){
+                if(response.indexOf('<') == -1){
+                    var result = JSON.parse(response).error; 
+
+                    if(result.name != ""){
+                      $(".name_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.name+"</p>");
+                    }
+                    if(result.phone){
+                      $(".phone_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.phone+"</p>");
+                    }
+                    if(result.email){
+                      $(".email_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.email+"</p>");
+                    }
+                    if(result.message){
+                      $(".message_err").html("<p class='err'><span class='icon-times-circle-o'></span>"+result.message+"</p>");
+                    }
+                    if(!result.message && !result.name && !result.phone && !result.email){
+                      $(".sendEmailResult").html("<p class='succ'><span class='icon-check-circle-o'></span> Your message received! We will contact you as soon as possible</p>");
+                    }
+                } 
+                else {
+                  $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. You can send your message to info@montrealweb.ca directly.</p>");
+                }
+              }
+              else{
+                $(".sendEmailResult").html("<p class='succ'><span class='icon-check-circle-o'></span> Your message received! We will contact you as soon as possible</p>");
+                setTimeout(function() {
+                    $(".sendEmailResult .succ").hide(500).empty();
+                    $('#contact_form').trigger("reset");
+                }, 4000);
+              }
+
+            },
+            error: function(error) {
+                $(".sendEmailResult").html("<p class='err'><span class='icon-times-circle-o'></span> Unfortunately our server didn\'t respond. Please try later!</p>");
+            }
+        });
+      });
+
+
     });
 			
 
@@ -746,11 +763,11 @@
 
     // to prevent r-click
 
-        $(function() {
-            $(this).bind("contextmenu", function(e) {
-                e.preventDefault();
-            });
-        }); 
+    $(function() {/*
+      $(this).bind("contextmenu", function(e) {
+        e.preventDefault();
+      });*/
+    }); 
 
   </script>
 
