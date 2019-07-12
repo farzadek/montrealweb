@@ -97,7 +97,6 @@
                     <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
                     <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                    <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
                     <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link jsChangeLangHeader"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png"><?php echo $texts['lang'][$lang]; ?></a></li>
                   </ul>
@@ -482,7 +481,6 @@
                     <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
                     <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
                     <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                    <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
                     <li><a href="#contact-section" class="nav-link">Contact</a></li>
                     <li><a href class="nav-link jsPrivacyPolicy" data-toggle="modal" onClick="showPrivacyModal(<?php echo $lang; ?>)" data-target="#privacyModal"><?php echo $texts['privacy_policy'][$lang]; ?></a></li>
                     <li><a href onClick="changeLang(<?php echo $lang; ?>)" class="nav-link jsChangeLangFooter"><img src="images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"> <?php echo $texts['lang'][$lang]; ?></a></li>
@@ -763,10 +761,10 @@
 
     // to prevent r-click
 
-    $(function() {/*
+    $(function() {
       $(this).bind("contextmenu", function(e) {
         e.preventDefault();
-      });*/
+      });
     }); 
 
   </script>

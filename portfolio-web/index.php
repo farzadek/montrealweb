@@ -56,10 +56,10 @@
         <div class="site-navbar site-navbar-target js-sticky-header">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-6 col-md-4">
+                    <div class="col-8 col-md-6">
                         <h1 class="my-0 site-logo"><a href="../"><img src="../images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
                     </div>
-                    <div class="col-6 col-md-8">
+                    <div class="col-4 col-md-6">
                         <nav class="site-navigation text-right" role="navigation">
                             <div class="container">
 
@@ -74,8 +74,7 @@
                                     <li><a href="../#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
                                     <li><a href="../#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
                                     <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                                    <li><a href="../#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
-                                    <li><a href="../#contact-section" class="nav-link">Contact</a></li>
+                                    <li><a href="../#contact-form" class="nav-link">Contact</a></li>
                                     <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"><?php echo $texts['lang'][$lang]; ?></a></li>
                                 </ul>
                             </div>
@@ -136,13 +135,12 @@
         <div class="row">
            
                 <ul class="list-unstyled">
-                    <li><a href="#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
-                    <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
-                    <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
-                    <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                    <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
+                    <li><a href="../#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
+                    <li><a href="../#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
+                    <li><a href="../#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
+                    <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
                     <li><a href class="nav-link jsPrivacyPolicy" data-toggle="modal" onClick="showPrivacyModal(<?php echo $lang; ?>)" data-target="#privacyModal"><?php echo $texts['privacy_policy'][$lang]; ?></a></li>
-                    <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                    <li><a href="../#contact-form" class="nav-link">Contact</a></li>
                 </ul>
         </div>
         <div class="row pt-5 mt-5 text-center">

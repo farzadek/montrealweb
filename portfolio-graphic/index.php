@@ -5,6 +5,7 @@
   if(isset($_COOKIE['lang'])){
     $lang = htmlspecialchars($_COOKIE["lang"]);
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +32,6 @@
     <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
     <link rel="shortcut icon" href="../images/logo.ico" />
     <link rel="apple-touch-icon" href="../images/logo.ico" />
     </head>
@@ -43,13 +42,6 @@
       document.cookie = "lang=" + cvalue + ";path=/";
       location.reload();
     }
-    $(function() {
-      $('.lazy').lazy({
-        effect: "fadeIn",
-        effectTime: 2000,
-        threshold: 0
-      })
-    });
   </script>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -70,10 +62,10 @@
         <div class="site-navbar site-navbar-target js-sticky-header">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-6 col-md-4">
+                    <div class="col-8 col-md-6">
                         <h1 class="my-0 site-logo"><a href="../"><img src="../images/logo.png" alt="montrealweb logo"/>MontrealWEB</a></h1>
                     </div>
-                    <div class="col-6 col-md-8">
+                    <div class="col-4 col-md-6">
                         <nav class="site-navigation text-right" role="navigation">
                             <div class="container">
 
@@ -88,8 +80,7 @@
                                     <li><a href="../#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
                                     <li><a href="../#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
                                     <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-                                    <li><a href="../#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
-                                    <li><a href="../#contact-section" class="nav-link">Contact</a></li>
+                                    <li><a href="../#contact-form" class="nav-link">Contact</a></li>
                                     <li><a onClick="changeLang(<?php echo $lang; ?>)" class="nav-link"><img src="../images/<?php echo $lang==0?'qc_flag':'en_flag'; ?>.png" alt="change language"><?php echo $texts['lang'][$lang]; ?></a></li>
                                 </ul>
                             </div>
@@ -109,18 +100,20 @@
                     <h2 class="title text-primary"><?php echo $texts['graphic_design'][$lang]; ?></h2>
                 </div>
             </div>
+            <div class="loading"></div>
 
-            <div class="images">
+            <div class="gal">
             <?php
-              $files = scandir('../images/portfolio/graphic');
+            $dir = '../images/portfolio/graphic/';
+              $files = scandir($dir);
               array_splice($files, 0, 2);
               $i = 0;
               while($i<sizeof($files)){
-                $imgSrc = '../images/portfolio/graphic/'.$files[$i];
+                $imgSrc = $dir.$files[$i];
                 $title = explode("$",$files[$i])[0];
             ?>
               <elem data-toggle="modal" data-target="#previewModal" onClick="showModal('<?php echo $title; ?>')">
-                <img class="lazy" data-src="<?php echo $imgSrc; ?>" alt="image graphic<?php echo $title; ?>" >
+                <img src="<?php echo $imgSrc; ?>" alt="image graphic<?php echo $title; ?>" >
                 <span class="icon-search-plus"></span>
               </elem>
             <?php
@@ -138,13 +131,12 @@
       <div class="container">
         <div class="row">
           <ul class="list-unstyled">
-            <li><a href="#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
-            <li><a href="#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
-            <li><a href="#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
-            <li><a href="#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
-            <li><a href="#clients-section" class="nav-link"><?php echo $texts['our_clients'][$lang]; ?></a></li>
+            <li><a href="../#home-section" class="nav-link"><?php echo $texts['home'][$lang]; ?></a></li>
+            <li><a href="../#what-we-do-section" class="nav-link"><?php echo $texts['what_we_do'][$lang]; ?></a></li>
+            <li><a href="../#portfolio-section" class="nav-link"><?php echo $texts['portfolio'][$lang]; ?></a></li>
+            <li><a href="../#about-section" class="nav-link"><?php echo $texts['about_us'][$lang]; ?></a></li>
             <li><a href class="nav-link jsPrivacyPolicy" data-toggle="modal" onClick="showPrivacyModal(<?php echo $lang; ?>)" data-target="#privacyModal"><?php echo $texts['privacy_policy'][$lang]; ?></a></li>
-            <li><a href="#contact-section" class="nav-link">Contact</a></li>
+            <li><a href="../#contact_form" class="nav-link">Contact</a></li>
           </ul>
         </div>
         <div class="row pt-5 mt-5 text-center">
@@ -160,19 +152,20 @@
     </footer>
   </div>
 
-  <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
 
   <script src="../js/owl.carousel.min.js"></script>
   <script src="../js/aos.js"></script>
   <script src="../js/jquery.sticky.js"></script>
-  <script src="../js/stickyfill.min.js"></script>
-  <script src="../js/jquery.easing.1.3.js"></script>
-  <script src="../js/jquery.fancybox.min.js"></script>
 
   <script src="../js/main.js"></script>
 
   <script>
+    window.addEventListener("load", function(){
+        $('.loading').fadeOut(1000, function(){
+            $('.gal').fadeIn(1000);
+        });
+    });
     function changeLang(lang) {
       var cvalue = lang==0 ? 1 : 0;
       document.cookie = "lang=" + cvalue + ";path=/";
@@ -197,10 +190,10 @@
 
     // to prevent r-click
     
-        $(function() {
+        $(function() {/*
             $(this).bind("contextmenu", function(e) {
                 e.preventDefault();
-            });
+            });*/
         }); 
 
   </script>
