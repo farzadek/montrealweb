@@ -25,6 +25,11 @@
     <link rel="apple-touch-icon" href="../images/logo.ico" />
 
     <script src="../js/jquery-3.3.1.min.js"></script>    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="../css/style.css">  
   </head>
   
   <script>
@@ -48,7 +53,10 @@
         -moz-column-count: 2; /* Firefox */
         column-count: 2;
 	    }
-	  }    
+    }    
+    #portfolio_page .loading{
+      padding-top: .75em;
+    }
   </style>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -100,7 +108,7 @@
 
 
     <div class="site-section bg-light" id="portfolio_page">
-        <div class="acontainer">
+        <div class="container">
             <div class="gal">
   
             <?php
@@ -109,6 +117,7 @@
                 }
             ?>
 	          </div>
+            <div class="loading"></div>
             <p>info@montrealweb.ca<br/>(438) 300 0456</p>
         </div>
     </div> 
@@ -144,14 +153,7 @@
     </footer>
   </div>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="../fonts/icomoon/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    
-    
-    <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
-  
-    <link rel="stylesheet" href="../css/style.css">
+
 
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -166,6 +168,11 @@
     <script src="../js/lightslider.js"></script>
 
     <script>
+      $(window).on('load', function() {
+        $('.loading').fadeOut(1000, function(){
+            $('.gal').fadeIn(1000);
+        });
+      });
       function changeLang(lang) {
         var cvalue = lang==0 ? 1 : 0;
         document.cookie = "lang=" + cvalue + ";path=/";

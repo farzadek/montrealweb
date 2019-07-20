@@ -25,6 +25,7 @@
     $texts['we_are_expert_in_web_text'] = ['After years of education in IT, Computer application programming, Web technology and Infographie, and more than 10 years of experiences in big, medium or small size projects, now we can say that we are expert in some areas in web and IT.', 'Après des années de formation en informatique, en programmation d\'applications, en technologie Web et en infographie, et plus de 10 ans d\'expérience dans des projets de grande, moyenne ou petite taille, nous pouvons maintenant affirmer que nous sommes des experts dans certains domaines du web et de l\'informatique.'];
     $texts['frontend_development'] = ['Frontend Development', 'Développement Frontend'];
     $texts['graphic_design'] = ['Graphic Design', 'Conception graphique'];
+    $texts['web_design_ui'] = ['Web Design (UI)', 'Conception Web (UI)'];
     $texts['photography'] = ['Photography', 'La photographie'];
     $texts['meet_the_team'] = ['MEET THE TEAM', 'RENCONTRER L\'ÉQUIPE'];
     $texts['we_are_expert_in_what_we_do'] = ['We Are Expert In What we do!', 'Nous sommes experts dans ce que nous faisons!'];

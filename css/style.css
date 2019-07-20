@@ -16,8 +16,8 @@ body {
    .loading {
      display: block;
      position: relative;
-     width: 5em;
-     height: 5em;
+     width: 4em;
+     height: 4em;
      margin: 0 auto 4em;
    }
 
@@ -29,7 +29,7 @@ body {
      height: 0;
      margin-bottom: 6px;
      box-sizing: border-box;
-     border: 2.5em solid #fff;
+     border: 2em solid #fff;
      border-color: #f7941e transparent #25aae1 transparent;
      animation: lds-hourglass 1.2s infinite;
    }
@@ -712,6 +712,9 @@ h1, h2, h3, h4, h5, h6 {
   .service p {
     color: #999999;
     font-size: 1rem; }
+.portfolio .service{
+  border-top: 2px solid #ff8c00;
+}
 
 .readmore {
   position: relative;
